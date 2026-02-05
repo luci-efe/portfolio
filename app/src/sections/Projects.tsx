@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Database, Cloud, Code, Phone, Car, Wrench, Sparkles, LineChart } from 'lucide-react';
+import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Code, Phone, Car, Wrench, Sparkles, LineChart } from 'lucide-react';
 import { Card3D } from '@/components/ui/Card3D';
 import { SkillBadge } from '@/components/ui/SkillBadge';
 
@@ -204,7 +204,7 @@ export const Projects: React.FC = () => {
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
-                      <SkillBadge key={tag} variant="small">
+                      <SkillBadge key={tag}>
                         {tag}
                       </SkillBadge>
                     ))}
