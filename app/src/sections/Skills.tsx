@@ -2,82 +2,69 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Code2,
-  Database,
-  Cloud,
   Brain,
+  Cloud,
   Server,
-  Container,
-  Workflow,
-  Shield,
-  Terminal,
-  Cpu,
   Layers,
-  GitBranch,
+  Star,
+  Zap,
+  Award,
+  TrendingUp
 } from 'lucide-react';
 
 interface SkillCategory {
   title: string;
   icon: React.ElementType;
   color: string;
-  skills: { name: string; level: number }[];
+  gradient: string;
+  skills: string[];
+  highlight: string;
 }
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'Languages',
+    title: 'Languages & Frameworks',
     icon: Code2,
-    color: 'from-violet-500 to-purple-500',
-    skills: [
-      { name: 'Python', level: 95 },
-      { name: 'TypeScript', level: 90 },
-      { name: 'Java', level: 75 },
-      { name: 'SQL', level: 85 },
-    ],
-  },
-  {
-    title: 'Cloud & Infrastructure',
-    icon: Cloud,
-    color: 'from-cyan-500 to-blue-500',
-    skills: [
-      { name: 'Oracle Cloud', level: 85 },
-      { name: 'AWS', level: 80 },
-      { name: 'Cloudflare', level: 90 },
-      { name: 'Vercel', level: 85 },
-    ],
+    color: 'text-violet-400',
+    gradient: 'from-violet-500 to-purple-500',
+    skills: ['Python', 'TypeScript', 'JavaScript', 'SQL', 'React', 'Node.js'],
+    highlight: 'TypeScript-first development',
   },
   {
     title: 'AI / ML',
     icon: Brain,
-    color: 'from-orange-500 to-amber-500',
-    skills: [
-      { name: 'OpenAI', level: 95 },
-      { name: 'Anthropic', level: 85 },
-      { name: 'LangChain', level: 80 },
-      { name: 'Mastra', level: 90 },
-    ],
+    color: 'text-orange-400',
+    gradient: 'from-orange-500 to-amber-500',
+    skills: ['OpenAI', 'Anthropic', 'Mastra', 'LangChain', 'RAG', 'Vector Embeddings'],
+    highlight: 'Mastra framework specialist',
   },
   {
-    title: 'DevOps',
-    icon: Container,
-    color: 'from-emerald-500 to-teal-500',
-    skills: [
-      { name: 'Docker', level: 85 },
-      { name: 'Kubernetes', level: 70 },
-      { name: 'Terraform', level: 75 },
-      { name: 'CI/CD', level: 80 },
-    ],
+    title: 'Cloud & Infrastructure',
+    icon: Cloud,
+    color: 'text-cyan-400',
+    gradient: 'from-cyan-500 to-blue-500',
+    skills: ['Cloudflare', 'AWS', 'Azure', 'Vercel', 'Oracle Cloud', 'Digital Ocean'],
+    highlight: '99.5% cost reduction architecture',
+  },
+  {
+    title: 'DevOps & Tools',
+    icon: Server,
+    color: 'text-emerald-400',
+    gradient: 'from-emerald-500 to-teal-500',
+    skills: ['Docker', 'Terraform', 'CI/CD', 'GitHub Actions', 'Kubernetes', 'Linux'],
+    highlight: 'CI/CD automation expert',
   },
 ];
 
-const additionalSkills = [
-  { name: 'React', icon: Layers },
-  { name: 'Node.js', icon: Server },
-  { name: 'PostgreSQL', icon: Database },
-  { name: 'Git', icon: GitBranch },
-  { name: 'Linux', icon: Terminal },
-  { name: 'Security', icon: Shield },
-  { name: 'System Design', icon: Cpu },
-  { name: 'Agile', icon: Workflow },
+const proficiencyLevels = [
+  { level: 'Expert', skills: ['Python', 'TypeScript', 'React', 'OpenAI', 'Mastra', 'Cloudflare'], icon: Star },
+  { level: 'Advanced', skills: ['Node.js', 'PostgreSQL', 'Docker', 'AWS', 'n8n', 'Vapi'], icon: TrendingUp },
+  { level: 'Proficient', skills: ['Azure', 'Kubernetes', 'Terraform', 'LangChain', 'Supabase'], icon: Zap },
+];
+
+const additionalTools = [
+  'Vapi', 'n8n', 'Twilio', 'ElevenLabs', 'Supabase', 'Convex', 
+  'HubSpot', 'Zoho CRM', 'Git', 'Claude Code', 'OpenClaw'
 ];
 
 export const Skills: React.FC = () => {
@@ -105,89 +92,134 @@ export const Skills: React.FC = () => {
           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
             Skills & <span className="text-gradient">Technologies</span>
           </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Technologies I use to build scalable, intelligent systems.
+          </p>
         </motion.div>
 
-        {/* Bento Grid */}
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
+        {/* Skill Categories Grid */}
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
-              className="glass-card rounded-2xl p-6"
+              className="glass-card rounded-2xl p-6 hover:bg-white/5 transition-colors group"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.01 }}
             >
               {/* Header */}
               <div className="flex items-center gap-3 mb-6">
-                <div className={`w-10 h-10 rounded-lg bg-gradient-to-r ${category.color} flex items-center justify-center`}>
-                  <category.icon size={20} className="text-white" />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${category.gradient} flex items-center justify-center`}>
+                  <category.icon size={24} className="text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                <div>
+                  <h3 className="text-xl font-bold text-white">{category.title}</h3>
+                  <p className={`text-sm ${category.color}`}>{category.highlight}</p>
+                </div>
               </div>
 
-              {/* Skills with Progress Bars */}
-              <div className="space-y-4">
+              {/* Skills Cloud */}
+              <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                  <motion.span
+                    key={skill}
+                    className={`px-3 py-1.5 rounded-lg text-sm font-medium bg-white/5 text-slate-300 border border-white/10 hover:border-${category.color.split('-')[1]}-500/50 hover:text-white transition-all cursor-default`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 + skillIndex * 0.05 }}
+                    transition={{ duration: 0.3, delay: index * 0.1 + skillIndex * 0.05 }}
+                    whileHover={{ scale: 1.05 }}
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm text-slate-300">{skill.name}</span>
-                      <span className="text-sm text-slate-500">{skill.level}%</span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <motion.div
-                        className={`h-full rounded-full bg-gradient-to-r ${category.color}`}
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: index * 0.1 + skillIndex * 0.05 + 0.3 }}
-                      />
-                    </div>
-                  </motion.div>
+                    {skill}
+                  </motion.span>
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Additional Skills */}
+        {/* Proficiency Levels */}
         <motion.div
-          className="glass-card rounded-2xl p-8"
+          className="glass-card rounded-2xl p-8 mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <h3 className="text-xl font-bold text-white mb-6 text-center">
-            Additional Tools & Frameworks
+            Proficiency Levels
           </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {additionalSkills.map((skill, index) => (
+          <div className="grid sm:grid-cols-3 gap-6">
+            {proficiencyLevels.map((prof, index) => (
               <motion.div
-                key={skill.name}
-                className="flex items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group"
+                key={prof.level}
+                className="text-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+              >
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <prof.icon size={20} className="text-cyan-400" />
+                  <span className="text-lg font-semibold text-white">{prof.level}</span>
+                </div>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {prof.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-2 py-1 text-xs rounded-full bg-white/5 text-slate-400"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Additional Tools */}
+        <motion.div
+          className="glass-card rounded-2xl p-8"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <h3 className="text-xl font-bold text-white mb-6 text-center">
+            Additional Tools & Platforms
+          </h3>
+          <div className="flex flex-wrap justify-center gap-3">
+            {additionalTools.map((tool, index) => (
+              <motion.div
+                key={tool}
+                className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                whileHover={{ scale: 1.05, y: -3 }}
+                transition={{ duration: 0.3, delay: 0.7 + index * 0.03 }}
+                whileHover={{ scale: 1.05, y: -2 }}
               >
-                <skill.icon
-                  size={20}
-                  className="text-slate-400 group-hover:text-cyan-400 transition-colors"
-                />
-                <span className="text-sm text-slate-300 group-hover:text-white transition-colors">
-                  {skill.name}
-                </span>
+                <Layers size={14} className="text-slate-500" />
+                <span className="text-sm text-slate-300">{tool}</span>
               </motion.div>
             ))}
+          </div>
+        </motion.div>
+
+        {/* Certifications */}
+        <motion.div
+          className="mt-12 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full glass">
+            <Award size={20} className="text-cyan-400" />
+            <span className="text-slate-300">Certifications:</span>
+            <span className="text-white font-medium">Google PM • IBM GenAI • Cisco CCNA</span>
           </div>
         </motion.div>
       </div>
