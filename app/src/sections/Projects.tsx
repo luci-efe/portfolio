@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Code, Phone, Car, Wrench, Sparkles, LineChart } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Code, Phone, Car, Wrench, Sparkles, LineChart, X } from 'lucide-react';
 import { Card3D } from '@/components/ui/Card3D';
 import { SkillBadge } from '@/components/ui/SkillBadge';
 
@@ -13,6 +13,7 @@ interface Project {
   icon: React.ElementType;
   link?: string;
   github?: string;
+  showContact?: boolean;
 }
 
 const projects: Project[] = [
@@ -24,17 +25,15 @@ const projects: Project[] = [
     tags: ['Vapi', 'OpenAI', 'n8n', 'Twilio', 'ElevenLabs', 'Zoho CRM', 'Supabase'],
     category: 'enterprise',
     icon: Phone,
-    link: '#',
-    github: 'https://github.com/luci-efe/teruya-voicebots',
+    showContact: true,
   },
   {
     title: 'Insurance Quote System',
-    description: 'Revolutionary RAG-based vehicle matching system processing 300K+ records across 11 insurance APIs. Replaced failed ETL approach with vector embeddings and semantic search, reducing query time from minutes to seconds.',
+    description: 'Revolutionary RAG-based vehicle matching system processing 300K+ records across 11 insurance APIs. Replaced failed ETL approach with vector embeddings and semantic search.',
     metrics: '300K+ records | 80%+ accuracy | 11 providers integrated',
     tags: ['Python', 'PostgreSQL', 'Vector Embeddings', 'RAG', 'n8n', 'Microsoft SQL Server'],
     category: 'enterprise',
     icon: Car,
-    link: '#',
   },
   {
     title: 'Medical Center Lead Gen',
@@ -43,8 +42,7 @@ const projects: Project[] = [
     tags: ['n8n', 'Supabase', 'HubSpot', 'Google Cloud', 'Digital Ocean'],
     category: 'enterprise',
     icon: MessageSquare,
-    link: '#',
-    github: 'https://github.com/luci-efe/staustin-chatbot',
+    showContact: true,
   },
   // Startup Projects - Agentic Engineering
   {
@@ -95,7 +93,7 @@ const projects: Project[] = [
   // Academic Projects - ITESO
   {
     title: 'ReparaYa',
-    description: 'Full-stack platform connecting contractors with homeowners needing domestic services. Built solo in 2 weeks when team failed to contribute. Validated "AI Orchestrator" concept using multiple AI agents for complete development.',
+    description: 'Full-stack platform connecting contractors with homeowners needing domestic services. Built solo in 2 weeks when team failed to contribute. Validated "AI Orchestrator" concept.',
     metrics: 'Solo project | 2 weeks delivery | AI-orchestrated development',
     tags: ['Next.js', 'Vercel', 'PostgreSQL', 'AI Orchestration'],
     category: 'academic',
@@ -114,13 +112,232 @@ const projects: Project[] = [
   },
 ];
 
-const categoryLabels = {
-  enterprise: { label: 'Enterprise', color: 'text-cyan-400', bgColor: 'bg-cyan-500/10' },
-  startup: { label: 'Startup', color: 'text-orange-400', bgColor: 'bg-orange-500/10' },
-  academic: { label: 'Academic', color: 'text-emerald-400', bgColor: 'bg-emerald-500/10' },
+const categoryConfig = {
+  enterprise: { 
+    label: 'Enterprise', 
+    color: 'text-cyan-400', 
+    bgColor: 'bg-cyan-500/10',
+    borderColor: 'border-cyan-500/20',
+    glowColor: 'rgba(6, 182, 212, 0.3)',
+    description: 'Production systems at Tendencia Systems'
+  },
+  startup: { 
+    label: 'Startup', 
+    color: 'text-orange-400', 
+    bgColor: 'bg-orange-500/10',
+    borderColor: 'border-orange-500/20',
+    glowColor: 'rgba(249, 115, 22, 0.3)',
+    description: 'Agentic Engineering products & experiments'
+  },
+  academic: { 
+    label: 'Academic', 
+    color: 'text-emerald-400', 
+    bgColor: 'bg-emerald-500/10',
+    borderColor: 'border-emerald-500/20',
+    glowColor: 'rgba(16, 185, 129, 0.3)',
+    description: 'ITESO coursework & personal projects'
+  },
+};
+
+const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitle: string }> = ({ isOpen, onClose, projectTitle }) => {
+  const isVoicebot = projectTitle.includes('Voicebots');
+  
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+          />
+          <motion.div
+            className="fixed inset-0 flex items-center justify-center z-50 p-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+          >
+            <div className="glass-card rounded-2xl p-8 max-w-md w-full relative">
+              <button
+                onClick={onClose}
+                className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
+              
+              <h3 className="text-2xl font-bold text-white mb-4">
+                {isVoicebot ? 'Voicebot Numbers' : 'Chatbot Contact'}
+              </h3>
+              
+              {isVoicebot ? (
+                <div className="space-y-4">
+                  <p className="text-slate-400 mb-4">Call any of these numbers to interact with the voicebots:</p>
+                  <div className="space-y-3">
+                    {['+1 (786) 530-2445', '+1 (786) 999-2571', '+1 (786) 999-2458'].map((num, i) => (
+                      <a
+                        key={i}
+                        href={`tel:${num.replace(/\s/g, '')}`}
+                        className="flex items-center gap-3 p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors"
+                      >
+                        <Phone size={20} className="text-cyan-400" />
+                        <span className="text-white font-medium">{num}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <p className="text-xs text-slate-500 mt-4">Available 24/7 in English and Spanish</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <p className="text-slate-400 mb-4">Scan or click to chat with the WhatsApp bot:</p>
+                  <a
+                    href="https://wa.me/524421096595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
+                  >
+                    <MessageSquare size={20} className="text-emerald-400" />
+                    <div>
+                      <span className="text-white font-medium block">+52 442 109 6595</span>
+                      <span className="text-xs text-slate-400">Sta. Austin Medical Center</span>
+                    </div>
+                  </a>
+                  <p className="text-xs text-slate-500 mt-4">Automated lead qualification and appointment scheduling</p>
+                </div>
+              )}
+            </div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+
+const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
+  const [showModal, setShowModal] = useState(false);
+  const config = categoryConfig[project.category];
+  
+  return (
+    <>
+      <Card3D className="h-full" intensity={8} glowColor={config.glowColor}>
+        <motion.div
+          className="glass-card rounded-2xl p-6 h-full flex flex-col"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+          {/* Header */}
+          <div className="flex items-start justify-between mb-4">
+            <div className={`w-12 h-12 rounded-xl ${config.bgColor} flex items-center justify-center`}>
+              <project.icon size={24} className={config.color} />
+            </div>
+            <span className={`text-xs font-medium px-3 py-1 rounded-full ${config.bgColor} ${config.color} border ${config.borderColor}`}>
+              {config.label}
+            </span>
+          </div>
+
+          {/* Title */}
+          <h3 className="text-xl font-bold text-white mb-2">
+            {project.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-grow">
+            {project.description}
+          </p>
+
+          {/* Metrics */}
+          <div className="mb-4 p-3 rounded-lg bg-white/5 border border-white/10">
+            <p className="text-xs text-cyan-400 font-medium">{project.metrics}</p>
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.tags.map((tag) => (
+              <SkillBadge key={tag}>{tag}</SkillBadge>
+            ))}
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex items-center gap-3 mt-auto">
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-semibold hover:from-cyan-500 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20"
+              >
+                <ExternalLink size={16} />
+                Visit Website
+              </a>
+            )}
+            {project.showContact && (
+              <button
+                onClick={() => setShowModal(true)}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white text-sm font-semibold hover:bg-white/20 transition-all"
+              >
+                <Phone size={16} />
+                Try It
+              </button>
+            )}
+            {project.github && (
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+              >
+                <Github size={18} />
+              </a>
+            )}
+          </div>
+        </motion.div>
+      </Card3D>
+      
+      <ContactModal 
+        isOpen={showModal} 
+        onClose={() => setShowModal(false)} 
+        projectTitle={project.title}
+      />
+    </>
+  );
 };
 
 export const Projects: React.FC = () => {
+  const enterpriseProjects = projects.filter(p => p.category === 'enterprise');
+  const startupProjects = projects.filter(p => p.category === 'startup');
+  const academicProjects = projects.filter(p => p.category === 'academic');
+
+  const renderCategory = (categoryProjects: Project[], categoryKey: 'enterprise' | 'startup' | 'academic') => {
+    const config = categoryConfig[categoryKey];
+    
+    return (
+      <div className="mb-16">
+        <motion.div
+          className="flex items-center gap-4 mb-8"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
+          <div className={`h-px flex-1 ${config.bgColor}`} />
+          <div className="text-center">
+            <h3 className={`text-2xl font-bold ${config.color}`}>{config.label}</h3>
+            <p className="text-sm text-slate-500">{config.description}</p>
+          </div>
+          <div className={`h-px flex-1 ${config.bgColor}`} />
+        </motion.div>
+        
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {categoryProjects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <section
       id="projects"
@@ -146,100 +363,18 @@ export const Projects: React.FC = () => {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            A selection of projects spanning enterprise solutions at Tendencia Systems, 
-            startup innovations at Agentic Engineering, and academic research at ITESO.
+            A selection of projects spanning enterprise solutions, startup innovations, and academic research.
           </p>
         </motion.div>
 
-        {/* Projects Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => {
-            const categoryStyle = categoryLabels[project.category];
-            
-            return (
-              <Card3D
-                key={project.title}
-                className="h-full"
-                intensity={8}
-                glowColor={
-                  project.category === 'enterprise'
-                    ? 'rgba(6, 182, 212, 0.3)'
-                    : project.category === 'startup'
-                    ? 'rgba(249, 115, 22, 0.3)'
-                    : 'rgba(16, 185, 129, 0.3)'
-                }
-              >
-                <motion.div
-                  className="glass-card rounded-2xl p-6 h-full flex flex-col"
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                >
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className={`w-12 h-12 rounded-xl ${categoryStyle.bgColor} flex items-center justify-center`}>
-                      <project.icon size={24} className={categoryStyle.color} />
-                    </div>
-                    <span className={`text-xs font-medium px-2 py-1 rounded-full ${categoryStyle.bgColor} ${categoryStyle.color}`}>
-                      {categoryStyle.label}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    {project.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-grow">
-                    {project.description}
-                  </p>
-
-                  {/* Metrics */}
-                  <div className="mb-4 p-3 rounded-lg bg-white/5 border border-white/10">
-                    <p className="text-xs text-cyan-400 font-medium">{project.metrics}</p>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <SkillBadge key={tag}>
-                        {tag}
-                      </SkillBadge>
-                    ))}
-                  </div>
-
-                  {/* Links */}
-                  <div className="flex items-center gap-3 mt-auto">
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
-                      >
-                        <ExternalLink size={14} />
-                        View Live
-                      </a>
-                    )}
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1 text-sm text-slate-400 hover:text-white transition-colors"
-                      >
-                        <Github size={14} />
-                        Code
-                      </a>
-                    )}
-                  </div>
-                </motion.div>
-              </Card3D>
-            );
-          })}
-        </div>
+        {/* Enterprise Section */}
+        {renderCategory(enterpriseProjects, 'enterprise')}
+        
+        {/* Startup Section */}
+        {renderCategory(startupProjects, 'startup')}
+        
+        {/* Academic Section */}
+        {renderCategory(academicProjects, 'academic')}
       </div>
     </section>
   );

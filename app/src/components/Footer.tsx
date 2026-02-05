@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -59,25 +59,15 @@ export const Footer: React.FC = () => {
           {/* Back to Top */}
           <motion.button
             onClick={scrollToTop}
-            className="w-10 h-10 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 flex items-center justify-center text-white"
-            whileHover={{ scale: 1.1, y: -3 }}
+            className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 flex items-center justify-center text-white text-sm font-medium"
+            whileHover={{ scale: 1.05, y: -3 }}
             whileTap={{ scale: 0.95 }}
           >
-            <ArrowUp size={18} />
+            <ArrowUp size={16} className="mr-2" />
+            Go back to top
           </motion.button>
         </div>
 
-        {/* Made with love */}
-        <motion.div
-          className="text-center mt-8 pt-8 border-t border-white/5"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-sm text-slate-600 flex items-center justify-center gap-1">
-            Made with <Heart size={14} className="text-red-500 fill-red-500" /> in Guadalajara, México
-          </p>
-        </motion.div>
       </div>
     </footer>
   );

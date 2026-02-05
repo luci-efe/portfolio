@@ -137,8 +137,8 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.6, delay: 1 }}
         >
           {[
-            { value: '4+', label: 'Years Experience' },
-            { value: '15+', label: 'Projects' },
+            { value: '2.5+', label: 'Years Experience' },
+            { value: '8+', label: 'Projects' },
             { value: '300K+', label: 'Records Processed' },
           ].map((stat, index) => (
             <motion.div

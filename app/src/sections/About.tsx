@@ -5,8 +5,8 @@ import { CountUp } from '@/components/ui/CountUp';
 import { useInView } from '@/hooks/useInView';
 
 const stats = [
-  { value: 4, suffix: '+', label: 'Years Experience' },
-  { value: 15, suffix: '+', label: 'Projects Completed' },
+  { value: 2.5, suffix: '+', label: 'Years Experience' },
+  { value: 8, suffix: '+', label: 'Projects Completed' },
   { value: 3, suffix: '', label: 'Companies' },
   { value: 300, suffix: 'K+', label: 'Records Processed' },
 ];
