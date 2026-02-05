@@ -427,13 +427,13 @@ export const Projects: React.FC = () => {
           </p>
         </motion.div>
 
-        {/* Enterprise Section */}
-        {renderCategory(enterpriseProjects, 'enterprise')}
-        
-        {/* Startup Section */}
+        {/* Startup Section - Agentic Engineering */}
         {renderCategory(startupProjects, 'startup')}
         
-        {/* Academic Section */}
+        {/* Enterprise Section - Tendencia Systems */}
+        {renderCategory(enterpriseProjects, 'enterprise')}
+        
+        {/* Academic Section - ITESO */}
         {renderCategory(academicProjects, 'academic')}
       </div>
     </section>
