@@ -14,6 +14,7 @@ interface Project {
   link?: string;
   github?: string;
   showContact?: boolean;
+  downloadProposal?: string;
 }
 
 const projects: Project[] = [
@@ -108,6 +109,7 @@ const projects: Project[] = [
     category: 'academic',
     icon: Wrench,
     github: 'https://github.com/sensorgrid-labs',
+    downloadProposal: '/SensorGrid_Propuesta_Tecnica.md',
   },
   {
     title: 'ReparaYa',
@@ -390,6 +392,16 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                 className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
               >
                 <Github size={18} />
+              </a>
+            )}
+            {project.downloadProposal && (
+              <a
+                href={project.downloadProposal}
+                download
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold hover:bg-emerald-500/20 transition-all"
+              >
+                <ExternalLink size={16} />
+                Download Proposal
               </a>
             )}
           </div>
