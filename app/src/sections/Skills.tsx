@@ -32,7 +32,7 @@ const skillCategories: SkillCategory[] = [
     icon: Brain,
     color: 'text-orange-400',
     gradient: 'from-orange-500 to-amber-500',
-    skills: ['OpenAI', 'Anthropic', 'Mastra', 'LangChain', 'RAG', 'Vector Embeddings'],
+    skills: ['OpenAI', 'Anthropic', 'Mastra', 'RAG', 'Vector Embeddings'],
     highlight: 'Mastra framework specialist',
   },
   {
@@ -40,7 +40,7 @@ const skillCategories: SkillCategory[] = [
     icon: Cloud,
     color: 'text-cyan-400',
     gradient: 'from-cyan-500 to-blue-500',
-    skills: ['Cloudflare', 'AWS', 'Azure', 'Vercel', 'Oracle Cloud', 'Digital Ocean'],
+    skills: ['Cloudflare', 'AWS', 'Azure', 'Vercel', 'Google Cloud', 'Digital Ocean'],
     highlight: '99.5% cost reduction architecture',
   },
   {
