@@ -142,6 +142,27 @@ const categoryConfig = {
 const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitle: string }> = ({ isOpen, onClose, projectTitle }) => {
   const isVoicebot = projectTitle.includes('Voicebots');
   
+  const voicebotNumbers = [
+    {
+      pair: 'New Client / Nuevo Cliente',
+      purpose: 'Opening new legal cases',
+      en: '+1 (786) 530-2445',
+      es: '+1 (786) 999-2571'
+    },
+    {
+      pair: 'Collections / Cobranzas',
+      purpose: 'Payment registration and billing inquiries',
+      en: '+1 (786) 999-2458',
+      es: '+1 (786) 999-2461'
+    },
+    {
+      pair: 'Existing Client / Cliente Existente',
+      purpose: 'Reception, case updates, and consultations',
+      en: '+1 (786) 999-2463',
+      es: '+1 (786) 999-2464'
+    }
+  ];
+  
   return (
     <AnimatePresence>
       {isOpen && (
@@ -159,7 +180,7 @@ const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitl
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
           >
-            <div className="glass-card rounded-2xl p-8 max-w-md w-full relative">
+            <div className="glass-card rounded-2xl p-8 max-w-2xl w-full relative max-h-[90vh] overflow-y-auto">
               <button
                 onClick={onClose}
                 className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
@@ -167,44 +188,83 @@ const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitl
                 <X size={24} />
               </button>
               
-              <h3 className="text-2xl font-bold text-white mb-4">
-                {isVoicebot ? 'Voicebot Numbers' : 'Chatbot Contact'}
-              </h3>
-              
               {isVoicebot ? (
-                <div className="space-y-4">
-                  <p className="text-slate-400 mb-4">Call any of these numbers to interact with the voicebots:</p>
-                  <div className="space-y-3">
-                    {['+1 (786) 530-2445', '+1 (786) 999-2571', '+1 (786) 999-2458'].map((num, i) => (
-                      <a
-                        key={i}
-                        href={`tel:${num.replace(/\s/g, '')}`}
-                        className="flex items-center gap-3 p-4 rounded-xl bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors"
+                <>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    AI Voicebots - Teruya & Sterling
+                  </h3>
+                  <p className="text-slate-400 mb-6">
+                    Florida law firm voice agents. Call any number to experience the bots in action. Available 24/7.
+                  </p>
+                  
+                  <div className="space-y-4">
+                    {voicebotNumbers.map((bot, index) => (
+                      <div 
+                        key={index}
+                        className="p-4 rounded-xl bg-white/5 border border-white/10"
                       >
-                        <Phone size={20} className="text-cyan-400" />
-                        <span className="text-white font-medium">{num}</span>
-                      </a>
+                        <h4 className="text-lg font-semibold text-cyan-400 mb-1">{bot.pair}</h4>
+                        <p className="text-sm text-slate-400 mb-3">{bot.purpose}</p>
+                        
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          <a
+                            href={`tel:${bot.en.replace(/[\s()-]/g, '')}`}
+                            className="flex items-center gap-2 p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
+                          >
+                            <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">EN</span>
+                            <Phone size={16} className="text-blue-400" />
+                            <span className="text-white font-medium">{bot.en}</span>
+                          </a>
+                          
+                          <a
+                            href={`tel:${bot.es.replace(/[\s()-]/g, '')}`}
+                            className="flex items-center gap-2 p-3 rounded-lg bg-orange-500/10 border border-orange-500/20 hover:bg-orange-500/20 transition-colors"
+                          >
+                            <span className="text-xs font-medium text-orange-400 uppercase tracking-wider">ES</span>
+                            <Phone size={16} className="text-orange-400" />
+                            <span className="text-white font-medium">{bot.es}</span>
+                          </a>
+                        </div>
+                      </div>
                     ))}
                   </div>
-                  <p className="text-xs text-slate-500 mt-4">Available 24/7 in English and Spanish</p>
-                </div>
+                  
+                  <div className="mt-6 p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
+                    <p className="text-sm text-slate-400">
+                      <strong className="text-cyan-400">Capabilities:</strong> New client intake, collections follow-up, case status inquiries, appointment scheduling, and general reception. All calls are logged to Zoho CRM with AI-generated summaries.
+                    </p>
+                  </div>
+                </>
               ) : (
-                <div className="space-y-4">
-                  <p className="text-slate-400 mb-4">Scan or click to chat with the WhatsApp bot:</p>
+                <>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    WhatsApp Chatbot
+                  </h3>
+                  <p className="text-slate-400 mb-6">Sta. Austin Medical Center - Querétaro</p>
+                  
                   <a
                     href="https://wa.me/524421096595"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
+                    className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors mb-6"
                   >
-                    <MessageSquare size={20} className="text-emerald-400" />
+                    <MessageSquare size={24} className="text-emerald-400" />
                     <div>
-                      <span className="text-white font-medium block">+52 442 109 6595</span>
-                      <span className="text-xs text-slate-400">Sta. Austin Medical Center</span>
+                      <span className="text-white font-medium block text-lg">+52 442 109 6595</span>
+                      <span className="text-sm text-slate-400">Click to open WhatsApp</span>
                     </div>
                   </a>
-                  <p className="text-xs text-slate-500 mt-4">Automated lead qualification and appointment scheduling</p>
-                </div>
+                  
+                  <div className="space-y-2 text-sm text-slate-400">
+                    <p><strong className="text-emerald-400">Features:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-2">
+                      <li>Automated lead qualification</li>
+                      <li>Appointment scheduling</li>
+                      <li>Service information</li>
+                      <li>Hot lead alerts to sales team</li>
+                    </ul>
+                  </div>
+                </>
               )}
             </div>
           </motion.div>

@@ -13,13 +13,6 @@ export const Hero: React.FC = () => {
     }
   };
 
-  const scrollToContact = () => {
-    const element = document.querySelector('#contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <section
       id="hero"
@@ -123,10 +116,16 @@ export const Hero: React.FC = () => {
             <FolderGit2 size={18} className="inline mr-2" />
             View Projects
           </MagneticButton>
-          <MagneticButton variant="secondary" onClick={scrollToContact}>
-            <Download size={18} className="inline mr-2" />
-            Download CV
-          </MagneticButton>
+          <a
+            href="/Fernando_Ramos_CV.pdf"
+            download="Fernando_Ramos_CV.pdf"
+            className="inline-flex"
+          >
+            <MagneticButton variant="secondary">
+              <Download size={18} className="inline mr-2" />
+              Download CV
+            </MagneticButton>
+          </a>
         </motion.div>
 
         {/* Stats Preview */}
