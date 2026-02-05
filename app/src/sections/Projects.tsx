@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Code, Phone, Car, Wrench, Sparkles, LineChart, X } from 'lucide-react';
+import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Phone, Car, Wrench, Sparkles, LineChart, X } from 'lucide-react';
 import { Card3D } from '@/components/ui/Card3D';
 import { SkillBadge } from '@/components/ui/SkillBadge';
 
@@ -14,6 +14,7 @@ interface Project {
   link?: string;
   github?: string;
   showContact?: boolean;
+  downloadProposal?: string;
 }
 
 const projects: Project[] = [
@@ -101,6 +102,16 @@ const projects: Project[] = [
   },
   // Academic Projects - ITESO (Last)
   {
+    title: 'SensorGrid Labs',
+    description: 'IoT environmental monitoring system for ITESO cafeteria kitchens. Real-time temperature monitoring for refrigerators, air quality sensors (COVs, PM2.5), door status detection, and automated Telegram alerts. 100% cloud-native architecture with LoRaWAN connectivity.',
+    metrics: 'Team of 4 | 12-week project | LoRaWAN + Cloudflare + IoT sensors',
+    tags: ['ESP32', 'LoRaWAN', 'Cloudflare Workers', 'InfluxDB', 'Grafana', 'IoT', 'TypeScript'],
+    category: 'academic',
+    icon: Wrench,
+    github: 'https://github.com/sensorgrid-labs',
+    downloadProposal: '/SensorGrid_Propuesta_Tecnica.pdf',
+  },
+  {
     title: 'ReparaYa',
     description: 'Full-stack platform connecting contractors with homeowners needing domestic services. Built solo in 2 weeks when team failed to contribute. Validated "AI Orchestrator" concept.',
     metrics: 'Solo project | 2 weeks delivery | AI-orchestrated development',
@@ -109,15 +120,6 @@ const projects: Project[] = [
     icon: Wrench,
     link: 'https://repara-ya-mu.vercel.app/',
     github: 'https://github.com/luci-efe/ReparaYa',
-  },
-  {
-    title: 'Data Structures',
-    description: 'Advanced algorithms implementation including complex data processing, graph algorithms, and optimization solutions for academic coursework.',
-    metrics: 'Advanced algorithms | Optimized solutions',
-    tags: ['Python', 'Algorithms', 'Data Structures'],
-    category: 'academic',
-    icon: Code,
-    github: 'https://github.com/luci-efe',
   },
 ];
 
@@ -390,6 +392,16 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                 className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
               >
                 <Github size={18} />
+              </a>
+            )}
+            {project.downloadProposal && (
+              <a
+                href={project.downloadProposal}
+                download
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold hover:bg-emerald-500/20 transition-all"
+              >
+                <ExternalLink size={16} />
+                Download Proposal
               </a>
             )}
           </div>
