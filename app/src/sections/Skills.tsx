@@ -6,10 +6,7 @@ import {
   Cloud,
   Server,
   Layers,
-  Star,
-  Zap,
-  Award,
-  TrendingUp
+  Award
 } from 'lucide-react';
 
 interface SkillCategory {
@@ -54,12 +51,6 @@ const skillCategories: SkillCategory[] = [
     skills: ['Docker', 'Terraform', 'CI/CD', 'GitHub Actions', 'Linux'],
     highlight: 'CI/CD automation expert',
   },
-];
-
-const proficiencyLevels = [
-  { level: 'Expert', skills: ['Python', 'TypeScript', 'React', 'OpenAI', 'Mastra', 'Cloudflare'], icon: Star },
-  { level: 'Advanced', skills: ['Node.js', 'PostgreSQL', 'Docker', 'AWS', 'n8n', 'Vapi'], icon: TrendingUp },
-  { level: 'Proficient', skills: ['Azure', 'Terraform', 'LangChain', 'Supabase'], icon: Zap },
 ];
 
 const additionalTools = [
@@ -138,46 +129,6 @@ export const Skills: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Proficiency Levels */}
-        <motion.div
-          className="glass-card rounded-2xl p-8 mb-12"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <h3 className="text-xl font-bold text-white mb-6 text-center">
-            Proficiency Levels
-          </h3>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {proficiencyLevels.map((prof, index) => (
-              <motion.div
-                key={prof.level}
-                className="text-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
-              >
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <prof.icon size={20} className="text-cyan-400" />
-                  <span className="text-lg font-semibold text-white">{prof.level}</span>
-                </div>
-                <div className="flex flex-wrap justify-center gap-2">
-                  {prof.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-2 py-1 text-xs rounded-full bg-white/5 text-slate-400"
-                    >
-                      {skill}
-                    </span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Additional Tools */}
         <motion.div
