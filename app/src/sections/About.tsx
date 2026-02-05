@@ -118,7 +118,7 @@ export const About: React.FC = () => {
                 </p>
                 <p>
                   Currently completing my Computer Systems Engineering degree at ITESO, 
-                  graduating in <span className="text-cyan-400">December 2026</span>. Preparing for Oracle interview (Feb 25, 2026)!
+                  graduating in <span className="text-cyan-400">December 2026</span>.
                 </p>
               </div>
 
