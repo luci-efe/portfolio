@@ -17,34 +17,7 @@ interface Project {
 }
 
 const projects: Project[] = [
-  // Enterprise Projects - Tendencia Systems
-  {
-    title: 'AI Voicebots - Teruya & Sterling',
-    description: 'Bilingual voice agents (EN/ES) for Florida law firm handling new client intake, collections, and reception. Integrated with Vapi, OpenAI, Twilio, and Zoho CRM for seamless workflow automation.',
-    metrics: '6 bots | 700+ calls/month (40% of firm volume) | 60% cost reduction',
-    tags: ['Vapi', 'OpenAI', 'n8n', 'Twilio', 'ElevenLabs', 'Zoho CRM', 'Supabase'],
-    category: 'enterprise',
-    icon: Phone,
-    showContact: true,
-  },
-  {
-    title: 'Insurance Quote System',
-    description: 'Revolutionary RAG-based vehicle matching system processing 300K+ records across 11 insurance APIs. Replaced failed ETL approach with vector embeddings and semantic search.',
-    metrics: '300K+ records | 80%+ accuracy | 11 providers integrated',
-    tags: ['Python', 'PostgreSQL', 'Vector Embeddings', 'RAG', 'n8n', 'Microsoft SQL Server'],
-    category: 'enterprise',
-    icon: Car,
-  },
-  {
-    title: 'Medical Center Lead Gen',
-    description: 'WhatsApp chatbot for Sta. Austin Medical Center in Querétaro. Automated lead qualification, onboarding, and appointment scheduling, delivering hot leads to sales team daily.',
-    metrics: 'Daily qualified leads | 24/7 availability | Zero scope creep delivery',
-    tags: ['n8n', 'Supabase', 'HubSpot', 'Google Cloud', 'Digital Ocean'],
-    category: 'enterprise',
-    icon: MessageSquare,
-    showContact: true,
-  },
-  // Startup Projects - Agentic Engineering
+  // Startup Projects - Agentic Engineering (First)
   {
     title: 'Agentic Engineering',
     description: 'AI automation agency landing page. Combines cutting-edge AI technology with expert software development to deliver solutions that push boundaries.',
@@ -90,7 +63,34 @@ const projects: Project[] = [
     icon: LineChart,
     link: 'https://pricegenius.org/',
   },
-  // Academic Projects - ITESO
+  // Enterprise Projects - Tendencia Systems (Second)
+  {
+    title: 'AI Voicebots - Teruya & Sterling',
+    description: 'Bilingual voice agents (EN/ES) for Florida law firm handling new client intake, collections, and reception. Integrated with Vapi, OpenAI, Twilio, and Zoho CRM for seamless workflow automation.',
+    metrics: '6 bots | 700+ calls/month (40% of firm volume) | 60% cost reduction',
+    tags: ['Vapi', 'OpenAI', 'n8n', 'Twilio', 'ElevenLabs', 'Zoho CRM', 'Supabase'],
+    category: 'enterprise',
+    icon: Phone,
+    showContact: true,
+  },
+  {
+    title: 'Insurance Quote System',
+    description: 'Revolutionary RAG-based vehicle matching system processing 300K+ records across 11 insurance APIs. Replaced failed ETL approach with vector embeddings and semantic search.',
+    metrics: '300K+ records | 80%+ accuracy | 11 providers integrated',
+    tags: ['Python', 'PostgreSQL', 'Vector Embeddings', 'RAG', 'n8n', 'Microsoft SQL Server'],
+    category: 'enterprise',
+    icon: Car,
+  },
+  {
+    title: 'Medical Center Lead Gen',
+    description: 'WhatsApp chatbot for Sta. Austin Medical Center in Querétaro. Automated lead qualification, onboarding, and appointment scheduling, delivering hot leads to sales team daily.',
+    metrics: 'Daily qualified leads | 24/7 availability | Zero scope creep delivery',
+    tags: ['n8n', 'Supabase', 'HubSpot', 'Google Cloud', 'Digital Ocean'],
+    category: 'enterprise',
+    icon: MessageSquare,
+    showContact: true,
+  },
+  // Academic Projects - ITESO (Last)
   {
     title: 'ReparaYa',
     description: 'Full-stack platform connecting contractors with homeowners needing domestic services. Built solo in 2 weeks when team failed to contribute. Validated "AI Orchestrator" concept.',
