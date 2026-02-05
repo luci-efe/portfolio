@@ -51,7 +51,7 @@ const skillCategories: SkillCategory[] = [
     icon: Server,
     color: 'text-emerald-400',
     gradient: 'from-emerald-500 to-teal-500',
-    skills: ['Docker', 'Terraform', 'CI/CD', 'GitHub Actions', 'Kubernetes', 'Linux'],
+    skills: ['Docker', 'Terraform', 'CI/CD', 'GitHub Actions', 'Linux'],
     highlight: 'CI/CD automation expert',
   },
 ];
@@ -59,7 +59,7 @@ const skillCategories: SkillCategory[] = [
 const proficiencyLevels = [
   { level: 'Expert', skills: ['Python', 'TypeScript', 'React', 'OpenAI', 'Mastra', 'Cloudflare'], icon: Star },
   { level: 'Advanced', skills: ['Node.js', 'PostgreSQL', 'Docker', 'AWS', 'n8n', 'Vapi'], icon: TrendingUp },
-  { level: 'Proficient', skills: ['Azure', 'Kubernetes', 'Terraform', 'LangChain', 'Supabase'], icon: Zap },
+  { level: 'Proficient', skills: ['Azure', 'Terraform', 'LangChain', 'Supabase'], icon: Zap },
 ];
 
 const additionalTools = [
