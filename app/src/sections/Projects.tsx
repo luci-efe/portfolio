@@ -74,8 +74,8 @@ const projects: Project[] = [
   },
   {
     title: 'Defade.app',
-    description: 'B2C product for AI-powered automation (currently in pre-seed stage, ~10 users). Part of Agentic Engineering portfolio.',
-    metrics: '~10 users | Pre-seed stage | In development',
+    description: 'B2C AI-powered automation product for personal productivity. Early-stage product with active user testing and iteration.',
+    metrics: '~10 active users | User testing | Product iteration',
     tags: ['React', 'TypeScript', 'AI', 'Cloudflare'],
     category: 'startup',
     icon: Zap,
@@ -83,8 +83,8 @@ const projects: Project[] = [
   },
   {
     title: 'Price Genius',
-    description: 'AI-powered price comparison and optimization tool (work in progress, advancing development).',
-    metrics: 'In development | Price optimization | AI-driven',
+    description: 'AI-powered price comparison and optimization tool. Deployed for testing but not yet production-ready.',
+    metrics: 'Testing phase | Not production-ready | In development',
     tags: ['React', 'TypeScript', 'AI', 'Data Analysis'],
     category: 'startup',
     icon: LineChart,
