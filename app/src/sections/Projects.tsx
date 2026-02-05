@@ -109,7 +109,7 @@ const projects: Project[] = [
     category: 'academic',
     icon: Wrench,
     github: 'https://github.com/sensorgrid-labs',
-    downloadProposal: '/SensorGrid_Propuesta_Tecnica.md',
+    downloadProposal: '/SensorGrid_Propuesta_Tecnica.pdf',
   },
   {
     title: 'ReparaYa',
