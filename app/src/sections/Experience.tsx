@@ -7,40 +7,70 @@ interface ExperienceItem {
   company: string;
   period: string;
   description: string;
+  achievements: string[];
   icon: React.ElementType;
   color: string;
 }
 
 const experiences: ExperienceItem[] = [
   {
-    title: 'Co-founder & Lead Developer',
+    title: 'Co-founder & Tech Lead',
     company: 'Agentic Engineering',
-    period: '2025 - Present',
-    description: 'Building AI automation agency with 99.5% cost reduction architecture. Leading technical strategy and product development for AI-powered solutions.',
+    period: 'May 2025 – Present',
+    description: 'Co-founded AI automation agency focused on delivering cutting-edge solutions. Architected infrastructure achieving 99.5% cost reduction using Cloudflare + Convex + Mastra stack.',
+    achievements: [
+      'Designed and implemented Cloudflare + Convex + Mastra architecture (99.5% cost reduction)',
+      'Leading team of 4 (2 co-founders + 2 developers)',
+      'Developing SpecSafe: AI-driven test generation framework (TypeScript/Vitest)',
+      'Building Defade.app (B2C product, ~10 users)',
+      'Created Price Genius (price optimization tool, in development)',
+      'In pre-seed stage, seeking investment to scale operations',
+    ],
     icon: Rocket,
     color: 'from-violet-500 to-purple-500',
   },
   {
-    title: 'AI Systems Developer & Technical PM',
+    title: 'Software & AI Developer → Project Manager',
     company: 'Tendencia Systems',
-    period: '2024 - 2025',
-    description: 'Delivered 6 AI voicebots processing 500+ calls/month. Architected insurance data pipeline handling 300K records with 80% accuracy.',
+    period: 'Nov 2024 – May 2025',
+    description: 'Promoted from Developer to PM after demonstrating leadership. Delivered 3 major AI projects with 0 scope creep. Managed cross-functional team of 8 people.',
+    achievements: [
+      'AI Voicebots: 6 bilingual bots handling 700+ calls/month (40% of firm volume), 60% cost reduction',
+      'Insurance Pipeline: Processed 300K+ records across 11 APIs using vector embeddings (80%+ accuracy)',
+      'Medical Chatbot: Lead qualification system delivering daily hot leads',
+      'Reduced scope creep by 60% through structured PM practices',
+      'Led team of 8: 2 senior devs, 2 junior devs, DevOps, QA, and designer',
+      'Highest revenue-generating project for the company',
+    ],
     icon: Briefcase,
     color: 'from-cyan-500 to-blue-500',
   },
   {
-    title: 'Information Security Analyst',
+    title: 'Information Security Analyst (Contractor)',
     company: 'Eternal Data',
-    period: '2023 - 2024',
-    description: 'Vulnerability research for enterprise clients. Implemented security protocols and conducted penetration testing assessments.',
+    period: 'Oct 2024 – Feb 2026',
+    description: 'Vulnerability research and assessment for enterprise clients. Developed automation scripts and security protocols. Applied risk mitigation mindset transferable to software development.',
+    achievements: [
+      'Key client: Cinépolis (major Mexican cinema chain)',
+      'Developed Python/Shell scripts for vulnerability scanning automation',
+      'Created tools for data transformation and automated report generation',
+      'Implemented risk analysis frameworks applicable to secure software development',
+      'Conducted penetration testing and security assessments',
+    ],
     icon: Shield,
     color: 'from-emerald-500 to-teal-500',
   },
   {
     title: 'Computer Systems Engineering',
     company: 'ITESO',
-    period: '2022 - 2026',
-    description: '8th semester, graduating December 2026. Focus on AI, software engineering, and distributed systems.',
+    period: '2022 – 2026 (Graduating Dec 2026)',
+    description: '8th semester, graduating December 2026. Focus on AI, software engineering, and distributed systems. Built ReparaYa platform solo in 2 weeks, validating "AI Orchestrator" concept.',
+    achievements: [
+      'ReparaYa: Full-stack contractor platform built solo in 2 weeks (Next.js, Vercel)',
+      'Validated "AI Orchestrator" philosophy using multiple AI agents',
+      'Experience with advanced algorithms and database optimization',
+      'Leading class projects with AI-augmented development workflows',
+    ],
     icon: GraduationCap,
     color: 'from-orange-500 to-amber-500',
   },
@@ -121,7 +151,17 @@ export const Experience: React.FC = () => {
                       </p>
                       
                       {/* Description */}
-                      <p className="text-slate-400 text-sm leading-relaxed">{exp.description}</p>
+                      <p className="text-slate-400 text-sm leading-relaxed mb-4">{exp.description}</p>
+                      
+                      {/* Achievements */}
+                      <ul className={`text-sm text-slate-300 space-y-2 ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
+                        {exp.achievements.map((achievement, i) => (
+                          <li key={i} className="flex items-start gap-2">
+                            <span className="text-cyan-400 mt-1">•</span>
+                            <span>{achievement}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </motion.div>
                   </div>
 

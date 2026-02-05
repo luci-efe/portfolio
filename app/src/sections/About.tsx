@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Database, Brain, Cloud, Server, Terminal } from 'lucide-react';
+import { Code2, Database, Brain, Cloud, Server, Terminal, Users, Zap } from 'lucide-react';
 import { CountUp } from '@/components/ui/CountUp';
 import { useInView } from '@/hooks/useInView';
 
@@ -19,7 +19,7 @@ const techStack = [
   { name: 'OpenAI', icon: Brain, color: 'text-violet-400' },
   { name: 'Docker', icon: Server, color: 'text-blue-500' },
   { name: 'Cloudflare', icon: Cloud, color: 'text-orange-400' },
-  { name: 'AWS', icon: Cloud, color: 'text-amber-400' },
+  { name: 'Mastra', icon: Zap, color: 'text-pink-400' },
 ];
 
 export const About: React.FC = () => {
@@ -100,23 +100,49 @@ export const About: React.FC = () => {
               </h3>
               <div className="space-y-4 text-slate-400 leading-relaxed">
                 <p>
-                  I'm a Software Developer and AI Engineer based in Guadalajara, México, 
-                  with a passion for building intelligent systems that transform businesses 
-                  and improve people's lives.
+                  I'm a <span className="text-cyan-400 font-semibold">Software Developer & AI Engineer</span> based in Guadalajara, México, 
+                  with a passion for building intelligent systems that transform businesses.
+                </p>
+                <p>
+                  What sets me apart? I'm not just a coder—I'm a <span className="text-violet-400 font-semibold">PM-turned-developer</span> who has 
+                  led teams of 8 people while staying hands-on with cutting-edge tech.
+                </p>
+                <p>
+                  My philosophy: <span className="text-orange-400 font-semibold">"AI Orchestrator"</span>—I don't just write code, I orchestrate multiple 
+                  AI agents to build complete solutions. This approach let me deliver a full-stack 
+                  app (ReparaYa) solo in 2 weeks when my team failed to contribute.
                 </p>
                 <p>
                   As co-founder of Agentic Engineering, I lead the development of AI automation 
-                  solutions that have achieved up to <span className="text-cyan-400 font-semibold">99.5% cost reduction</span> for our clients.
-                </p>
-                <p>
-                  My expertise spans from developing AI voicebots processing 500+ calls monthly 
-                  to architecting cloud-native solutions that handle millions of records with 
-                  enterprise-grade security and reliability.
+                  solutions achieving <span className="text-emerald-400 font-semibold">99.5% cost reduction</span> with our Cloudflare + Convex + Mastra architecture.
                 </p>
                 <p>
                   Currently completing my Computer Systems Engineering degree at ITESO, 
-                  graduating in December 2026.
+                  graduating in <span className="text-cyan-400">December 2026</span>. Preparing for Oracle interview (Feb 25, 2026)!
                 </p>
+              </div>
+
+              {/* Differentiators */}
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <h4 className="text-lg font-semibold text-white mb-4">What Makes Me Different</h4>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  <li className="flex items-center gap-2">
+                    <Users size={16} className="text-cyan-400" />
+                    <span>Led teams of 8 (seniors, juniors, DevOps, QA, designers)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Zap size={16} className="text-orange-400" />
+                    <span>Always at cutting-edge technology (Mastra, RAG, Vector Search)</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Brain size={16} className="text-violet-400" />
+                    <span>Spec-Driven Development & AI-augmented workflows</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Cloud size={16} className="text-emerald-400" />
+                    <span>DevOps focus: CI/CD, automation, Cloudflare infrastructure</span>
+                  </li>
+                </ul>
               </div>
             </div>
           </motion.div>
@@ -152,6 +178,32 @@ export const About: React.FC = () => {
                     </span>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Additional Skills */}
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <h4 className="text-lg font-semibold text-white mb-4">Also Experienced With</h4>
+                <div className="flex flex-wrap gap-2">
+                  {['Vapi', 'n8n', 'Twilio', 'Supabase', 'Convex', 'Digital Ocean', 'AWS', 'HubSpot', 'Zoho CRM', 'ElevenLabs'].map((skill) => (
+                    <span
+                      key={skill}
+                      className="px-3 py-1 text-xs rounded-full bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white transition-colors"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Certifications */}
+              <div className="mt-8 pt-6 border-t border-white/10">
+                <h4 className="text-lg font-semibold text-white mb-4">Certifications</h4>
+                <ul className="space-y-2 text-sm text-slate-400">
+                  <li>• Google Project Management Professional</li>
+                  <li>• IBM Generative AI: Prompt Engineering</li>
+                  <li>• Google Security & Risk Management</li>
+                  <li>• Cisco CCNAv7 Networking Essentials</li>
+                </ul>
               </div>
             </div>
           </motion.div>
