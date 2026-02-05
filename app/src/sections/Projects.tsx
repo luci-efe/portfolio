@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Database, Cloud, Code } from 'lucide-react';
+import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Database, Cloud, Code, Phone, Car, Wrench, Sparkles, LineChart } from 'lucide-react';
 import { Card3D } from '@/components/ui/Card3D';
 import { SkillBadge } from '@/components/ui/SkillBadge';
 
@@ -16,79 +16,100 @@ interface Project {
 }
 
 const projects: Project[] = [
-  // Enterprise Projects
+  // Enterprise Projects - Tendencia Systems
   {
-    title: 'AI Voicebots',
-    description: 'Intelligent voice agents for customer service automation with natural language processing and real-time sentiment analysis.',
-    metrics: '6 bots | 500+ calls/month | 60% cost reduction',
-    tags: ['Python', 'PostgreSQL', 'OpenAI', 'REST APIs'],
+    title: 'AI Voicebots - Teruya & Sterling',
+    description: 'Bilingual voice agents (EN/ES) for Florida law firm handling new client intake, collections, and reception. Integrated with Vapi, OpenAI, Twilio, and Zoho CRM for seamless workflow automation.',
+    metrics: '6 bots | 700+ calls/month (40% of firm volume) | 60% cost reduction',
+    tags: ['Vapi', 'OpenAI', 'n8n', 'Twilio', 'ElevenLabs', 'Zoho CRM', 'Supabase'],
     category: 'enterprise',
-    icon: Bot,
+    icon: Phone,
+    link: '#',
+    github: 'https://github.com/luci-efe/teruya-voicebots',
+  },
+  {
+    title: 'Insurance Quote System',
+    description: 'Revolutionary RAG-based vehicle matching system processing 300K+ records across 11 insurance APIs. Replaced failed ETL approach with vector embeddings and semantic search, reducing query time from minutes to seconds.',
+    metrics: '300K+ records | 80%+ accuracy | 11 providers integrated',
+    tags: ['Python', 'PostgreSQL', 'Vector Embeddings', 'RAG', 'n8n', 'Microsoft SQL Server'],
+    category: 'enterprise',
+    icon: Car,
     link: '#',
   },
   {
-    title: 'Insurance Pipeline',
-    description: 'Automated data processing pipeline for insurance claims using Jaccard similarity algorithm for record matching.',
-    metrics: '300K records | 80% accuracy | Jaccard algorithm',
-    tags: ['Python', 'PostgreSQL', 'Data Processing'],
-    category: 'enterprise',
-    icon: Database,
-    link: '#',
-  },
-  {
-    title: 'Medical Chatbot',
-    description: 'AI-powered appointment scheduling and lead qualification system for healthcare providers.',
-    metrics: 'High-quality leads | 24/7 availability',
-    tags: ['OpenAI', 'Node.js', 'React'],
+    title: 'Medical Center Lead Gen',
+    description: 'WhatsApp chatbot for Sta. Austin Medical Center in Querétaro. Automated lead qualification, onboarding, and appointment scheduling, delivering hot leads to sales team daily.',
+    metrics: 'Daily qualified leads | 24/7 availability | Zero scope creep delivery',
+    tags: ['n8n', 'Supabase', 'HubSpot', 'Google Cloud', 'Digital Ocean'],
     category: 'enterprise',
     icon: MessageSquare,
     link: '#',
+    github: 'https://github.com/luci-efe/staustin-chatbot',
   },
-  // Startup Projects
+  // Startup Projects - Agentic Engineering
+  {
+    title: 'Agentic Engineering',
+    description: 'AI automation agency landing page. Combines cutting-edge AI technology with expert software development to deliver solutions that push boundaries.',
+    metrics: 'Live site | Modern design | AI-focused branding',
+    tags: ['React', 'TypeScript', 'Cloudflare', 'Modern UI'],
+    category: 'startup',
+    icon: Sparkles,
+    link: 'https://agenticengineering.agency/',
+  },
+  {
+    title: 'Chatbot Demos',
+    description: 'Interactive demos showcasing various AI chatbot implementations and voice agents for different business use cases.',
+    metrics: 'Live demos | Multiple bot types | Interactive showcase',
+    tags: ['React', 'AI Integration', 'Voice Agents', 'Chatbots'],
+    category: 'startup',
+    icon: Bot,
+    link: 'https://agenticengineering.online/',
+  },
   {
     title: 'SpecSafe',
-    description: 'AI-powered test generation platform that automatically creates TypeScript and Vitest test cases from code analysis.',
-    metrics: 'AI test generation | TypeScript/Vitest',
-    tags: ['TypeScript', 'React', 'OpenAI'],
+    description: 'AI-powered test generation framework that automatically creates TypeScript and Vitest test cases from code analysis. Implements Spec-Driven Development and TDD workflows.',
+    metrics: 'AI test generation | TypeScript/Vitest | Open Source',
+    tags: ['TypeScript', 'Vitest', 'AI', 'Open Source', 'Spec-Driven Development'],
     category: 'startup',
     icon: Shield,
-    github: 'https://github.com/luci-efe',
+    github: 'https://github.com/Agentic-Engineering-Agency/specsafe',
   },
   {
-    title: 'AI Platform',
-    description: 'Cloud-native AI automation platform built with Cloudflare Workers and Mastra framework.',
-    metrics: '99.5% cost reduction | Cloudflare + Mastra',
-    tags: ['TypeScript', 'Cloudflare', 'Mastra'],
-    category: 'startup',
-    icon: Cloud,
-    link: '#',
-  },
-  {
-    title: 'Automation Tools',
-    description: 'Suite of voice agents and workflow automation tools for small businesses.',
-    metrics: 'Voice agents | Workflow automation',
-    tags: ['Python', 'React', 'Mastra'],
+    title: 'Defade.app',
+    description: 'B2C product for AI-powered automation (currently in pre-seed stage, ~10 users). Part of Agentic Engineering portfolio.',
+    metrics: '~10 users | Pre-seed stage | In development',
+    tags: ['React', 'TypeScript', 'AI', 'Cloudflare'],
     category: 'startup',
     icon: Zap,
-    github: 'https://github.com/luci-efe',
+    link: 'https://defade.app/',
   },
-  // Academic Projects
+  {
+    title: 'Price Genius',
+    description: 'AI-powered price comparison and optimization tool (work in progress, advancing development).',
+    metrics: 'In development | Price optimization | AI-driven',
+    tags: ['React', 'TypeScript', 'AI', 'Data Analysis'],
+    category: 'startup',
+    icon: LineChart,
+    link: 'https://pricegenius.org/',
+  },
+  // Academic Projects - ITESO
+  {
+    title: 'ReparaYa',
+    description: 'Full-stack platform connecting contractors with homeowners needing domestic services. Built solo in 2 weeks when team failed to contribute. Validated "AI Orchestrator" concept using multiple AI agents for complete development.',
+    metrics: 'Solo project | 2 weeks delivery | AI-orchestrated development',
+    tags: ['Next.js', 'Vercel', 'PostgreSQL', 'AI Orchestration'],
+    category: 'academic',
+    icon: Wrench,
+    link: 'https://repara-ya-mu.vercel.app/',
+    github: 'https://github.com/luci-efe/ReparaYa',
+  },
   {
     title: 'Data Structures',
-    description: 'Advanced algorithms implementation including graphs, trees, and dynamic programming solutions.',
-    metrics: 'Advanced algorithms implementation',
-    tags: ['Python', 'Algorithms'],
+    description: 'Advanced algorithms implementation including complex data processing, graph algorithms, and optimization solutions for academic coursework.',
+    metrics: 'Advanced algorithms | Optimized solutions',
+    tags: ['Python', 'Algorithms', 'Data Structures'],
     category: 'academic',
     icon: Code,
-    github: 'https://github.com/luci-efe',
-  },
-  {
-    title: 'Database Systems',
-    description: 'PostgreSQL optimization project with query analysis and indexing strategies.',
-    metrics: 'PostgreSQL optimization',
-    tags: ['SQL', 'PostgreSQL'],
-    category: 'academic',
-    icon: Database,
     github: 'https://github.com/luci-efe',
   },
 ];
@@ -125,8 +146,8 @@ export const Projects: React.FC = () => {
             Featured <span className="text-gradient">Projects</span>
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            A selection of projects spanning enterprise solutions, startup innovations, 
-            and academic research in AI and software engineering.
+            A selection of projects spanning enterprise solutions at Tendencia Systems, 
+            startup innovations at Agentic Engineering, and academic research at ITESO.
           </p>
         </motion.div>
 
@@ -155,60 +176,63 @@ export const Projects: React.FC = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
-                  {/* Category Badge */}
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full ${categoryStyle.bgColor} w-fit mb-4`}>
-                    <project.icon size={14} className={categoryStyle.color} />
-                    <span className={`text-xs font-medium ${categoryStyle.color}`}>
+                  {/* Header */}
+                  <div className="flex items-start justify-between mb-4">
+                    <div className={`w-12 h-12 rounded-xl ${categoryStyle.bgColor} flex items-center justify-center`}>
+                      <project.icon size={24} className={categoryStyle.color} />
+                    </div>
+                    <span className={`text-xs font-medium px-2 py-1 rounded-full ${categoryStyle.bgColor} ${categoryStyle.color}`}>
                       {categoryStyle.label}
                     </span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    {project.title}
+                  </h3>
 
                   {/* Description */}
-                  <p className="text-slate-400 text-sm mb-4 flex-grow">{project.description}</p>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-grow">
+                    {project.description}
+                  </p>
 
                   {/* Metrics */}
-                  <div className="flex items-center gap-2 mb-4 p-3 rounded-lg bg-white/5">
-                    <Zap size={16} className="text-yellow-400" />
-                    <span className="text-sm text-slate-300">{project.metrics}</span>
+                  <div className="mb-4 p-3 rounded-lg bg-white/5 border border-white/10">
+                    <p className="text-xs text-cyan-400 font-medium">{project.metrics}</p>
                   </div>
 
                   {/* Tags */}
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
-                      <SkillBadge key={tag} variant={project.category}>
+                      <SkillBadge key={tag} variant="small">
                         {tag}
                       </SkillBadge>
                     ))}
                   </div>
 
                   {/* Links */}
-                  <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                  <div className="flex items-center gap-3 mt-auto">
                     {project.link && (
-                      <motion.a
+                      <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
-                        whileHover={{ x: 3 }}
+                        className="flex items-center gap-1 text-sm text-cyan-400 hover:text-cyan-300 transition-colors"
                       >
-                        <ExternalLink size={16} />
-                        View Project
-                      </motion.a>
+                        <ExternalLink size={14} />
+                        View Live
+                      </a>
                     )}
                     {project.github && (
-                      <motion.a
+                      <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm text-slate-400 hover:text-white transition-colors"
-                        whileHover={{ x: 3 }}
+                        className="flex items-center gap-1 text-sm text-slate-400 hover:text-white transition-colors"
                       >
-                        <Github size={16} />
-                        Source
-                      </motion.a>
+                        <Github size={14} />
+                        Code
+                      </a>
                     )}
                   </div>
                 </motion.div>
