@@ -26,7 +26,7 @@ const contactInfo = [
   {
     icon: MapPin,
     label: 'Location',
-    value: 'Guadalajara, México',
+    value: 'Jalisco, México',
     href: '#',
     color: 'from-orange-500 to-amber-500',
   },

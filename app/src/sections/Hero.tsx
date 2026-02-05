@@ -66,7 +66,7 @@ export const Hero: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <MapPin size={16} className="text-cyan-400" />
-          <span className="text-sm text-slate-300">Guadalajara, México</span>
+          <span className="text-sm text-slate-300">Jalisco, México</span>
         </motion.div>
 
         {/* Main Title */}
