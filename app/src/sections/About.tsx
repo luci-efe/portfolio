@@ -100,7 +100,7 @@ export const About: React.FC = () => {
               </h3>
               <div className="space-y-4 text-slate-400 leading-relaxed">
                 <p>
-                  I'm a <span className="text-cyan-400 font-semibold">Software Developer & AI Engineer</span> based in Guadalajara, México, 
+                  I'm a <span className="text-cyan-400 font-semibold">Software Developer & AI Engineer</span> based in Jalisco, México, 
                   with a passion for building intelligent systems that transform businesses.
                 </p>
                 <p>
