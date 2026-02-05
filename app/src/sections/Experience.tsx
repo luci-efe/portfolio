@@ -131,9 +131,9 @@ export const Experience: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                 >
                   {/* Content Card */}
-                  <div className={`flex-1 ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
+                  <div className="flex-1">
                     <motion.div
-                      className="glass-card rounded-2xl p-6 inline-block w-full md:max-w-md"
+                      className="glass-card rounded-2xl p-6 inline-block w-full md:max-w-md text-left"
                       whileHover={{ scale: 1.02, y: -5 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -154,10 +154,10 @@ export const Experience: React.FC = () => {
                       <p className="text-slate-400 text-sm leading-relaxed mb-4">{exp.description}</p>
                       
                       {/* Achievements */}
-                      <ul className={`text-sm text-slate-300 space-y-2 ${isLeft ? 'md:text-right' : 'md:text-left'}`}>
+                      <ul className="text-sm text-slate-300 space-y-2 text-left">
                         {exp.achievements.map((achievement, i) => (
                           <li key={i} className="flex items-start gap-2">
-                            <span className="text-cyan-400 mt-1">•</span>
+                            <span className="text-cyan-400 mt-1 flex-shrink-0">•</span>
                             <span>{achievement}</span>
                           </li>
                         ))}
