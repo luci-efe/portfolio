@@ -243,14 +243,14 @@ const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitl
                   <p className="text-slate-400 mb-6">Sta. Austin Medical Center - Querétaro</p>
                   
                   <a
-                    href="https://wa.me/524421096595"
+                    href="https://wa.me/4423864653"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors mb-6"
                   >
                     <MessageSquare size={24} className="text-emerald-400" />
                     <div>
-                      <span className="text-white font-medium block text-lg">+52 442 109 6595</span>
+                      <span className="text-white font-medium block text-lg">+52 442 386 4653</span>
                       <span className="text-sm text-slate-400">Click to open WhatsApp</span>
                     </div>
                   </a>
