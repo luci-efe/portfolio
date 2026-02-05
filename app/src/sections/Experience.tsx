@@ -16,7 +16,7 @@ const experiences: ExperienceItem[] = [
   {
     title: 'Co-founder & Tech Lead',
     company: 'Agentic Engineering',
-    period: 'May 2025 – Present',
+    period: 'December 2025 – Present',
     description: 'Co-founded AI automation agency focused on delivering cutting-edge solutions. Architected infrastructure achieving 99.5% cost reduction using Cloudflare + Convex + Mastra stack.',
     achievements: [
       'Designed and implemented Cloudflare + Convex + Mastra architecture (99.5% cost reduction)',
@@ -32,7 +32,7 @@ const experiences: ExperienceItem[] = [
   {
     title: 'Software & AI Developer → Project Manager',
     company: 'Tendencia Systems',
-    period: 'Nov 2024 – May 2025',
+    period: 'Nov 2024 – December 2025',
     description: 'Promoted from Developer to PM after demonstrating leadership. Delivered 3 major AI projects with 0 scope creep. Managed cross-functional team of 8 people.',
     achievements: [
       'AI Voicebots: 6 bilingual bots handling 700+ calls/month (40% of firm volume), 60% cost reduction',
