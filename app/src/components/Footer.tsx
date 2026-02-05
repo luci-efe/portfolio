@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -67,17 +67,6 @@ export const Footer: React.FC = () => {
           </motion.button>
         </div>
 
-        {/* Made with love */}
-        <motion.div
-          className="text-center mt-8 pt-8 border-t border-white/5"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
-          <p className="text-sm text-slate-600 flex items-center justify-center gap-1">
-            Made with <Heart size={14} className="text-red-500 fill-red-500" /> in Guadalajara, México
-          </p>
-        </motion.div>
       </div>
     </footer>
   );
