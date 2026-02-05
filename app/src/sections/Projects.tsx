@@ -90,6 +90,15 @@ const projects: Project[] = [
     icon: MessageSquare,
     showContact: true,
   },
+  {
+    title: 'Autos Hitti Lead Gen',
+    description: 'WhatsApp chatbot for car dealership capturing leads interested in buying vehicles. Qualifies prospects, completes onboarding, and schedules appointments with sales consultants when customers show interest in specific models or request to book.',
+    metrics: 'Hundreds of leads monthly | Daily appointments scheduled | Hot lead delivery',
+    tags: ['n8n', 'Supabase', 'WhatsApp API', 'Lead Qualification'],
+    category: 'enterprise',
+    icon: MessageSquare,
+    showContact: true,
+  },
   // Academic Projects - ITESO (Last)
   {
     title: 'ReparaYa',
@@ -141,6 +150,7 @@ const categoryConfig = {
 
 const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitle: string }> = ({ isOpen, onClose, projectTitle }) => {
   const isVoicebot = projectTitle.includes('Voicebots');
+  const isAutosHitti = projectTitle.includes('Autos Hitti');
   
   const voicebotNumbers = [
     {
@@ -233,6 +243,36 @@ const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitl
                     <p className="text-sm text-slate-400">
                       <strong className="text-cyan-400">Capabilities:</strong> New client intake, collections follow-up, case status inquiries, appointment scheduling, and general reception. All calls are logged to Zoho CRM with AI-generated summaries.
                     </p>
+                  </div>
+                </>
+              ) : isAutosHitti ? (
+                <>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    WhatsApp Chatbot
+                  </h3>
+                  <p className="text-slate-400 mb-6">Autos Hitti - Car Dealership</p>
+                  
+                  <a
+                    href="https://wa.me/33341711743"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors mb-6"
+                  >
+                    <MessageSquare size={24} className="text-emerald-400" />
+                    <div>
+                      <span className="text-white font-medium block text-lg">+52 33 4171 1743</span>
+                      <span className="text-sm text-slate-400">Click to open WhatsApp</span>
+                    </div>
+                  </a>
+                  
+                  <div className="space-y-2 text-sm text-slate-400">
+                    <p><strong className="text-emerald-400">Features:</strong></p>
+                    <ul className="list-disc list-inside space-y-1 ml-2">
+                      <li>Lead capture for car buyers</li>
+                      <li>Vehicle model inquiries</li>
+                      <li>Appointment scheduling with sales consultants</li>
+                      <li>Hot lead delivery to sales team</li>
+                    </ul>
                   </div>
                 </>
               ) : (
