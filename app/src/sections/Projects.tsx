@@ -255,14 +255,14 @@ const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitl
                   <p className="text-slate-400 mb-6">Autos Hitti - Car Dealership</p>
                   
                   <a
-                    href="https://wa.me/33341711743"
+                    href="https://wa.me/13341711743"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors mb-6"
                   >
                     <MessageSquare size={24} className="text-emerald-400" />
                     <div>
-                      <span className="text-white font-medium block text-lg">+52 33 4171 1743</span>
+                      <span className="text-white font-medium block text-lg">+52 1 33 4171 1743</span>
                       <span className="text-sm text-slate-400">Click to open WhatsApp</span>
                     </div>
                   </a>
