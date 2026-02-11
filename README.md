@@ -84,3 +84,4 @@ npm run preview
 - **Email:** [lramirez.ramos@iteso.mx](mailto:lramirez.ramos@iteso.mx)
 - **LinkedIn:** [linkedin.com/in/fernando-ramos-654514262](https://linkedin.com/in/fernando-ramos-654514262)
 - **GitHub:** [github.com/luci-efe](https://github.com/luci-efe)
+
