@@ -39,11 +39,12 @@ const projects: Project[] = [
   },
   {
     title: 'SpecSafe',
-    description: 'AI-powered test generation framework that automatically creates TypeScript and Vitest test cases from code analysis. Implements Spec-Driven Development and TDD workflows.',
-    metrics: 'AI test generation | TypeScript/Vitest | Open Source',
-    tags: ['TypeScript', 'Vitest', 'AI', 'Open Source', 'Spec-Driven Development'],
+    description: 'Spec-driven development (SDD) CLI framework for AI-assisted software engineering. Published on npm with 10+ commands for managing specs, generating tests, and tracking implementation stages. Features integrations with Cursor, Continue.dev, Aider, and Zed.',
+    metrics: 'npm: 400+ downloads | 139 tests | 10 CLI commands | AI coding tool integrations',
+    tags: ['TypeScript', 'Vitest', 'Open Source', 'Spec-Driven Development', 'CLI', 'npm'],
     category: 'startup',
     icon: Shield,
+    link: 'https://www.npmjs.com/package/@specsafe/cli',
     github: 'https://github.com/Agentic-Engineering-Agency/specsafe',
   },
   {
