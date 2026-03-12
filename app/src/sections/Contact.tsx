@@ -10,14 +10,15 @@ import {
   CheckCircle,
   Loader2,
 } from 'lucide-react';
+import { EmailPicker } from '@/components/ui/EmailPicker';
 // MagneticButton imported for future use
 
 const contactInfo = [
   {
     icon: Mail,
     label: 'Email',
-    value: 'lramirez.ramos@iteso.mx',
-    href: 'mailto:lramirez.ramos@iteso.mx',
+    value: 'fernando@agenticengineering.agency',
+    href: null,
     color: 'from-violet-500 to-purple-500',
   },
   {
@@ -124,28 +125,57 @@ export const Contact: React.FC = () => {
           >
             <div className="space-y-6">
               {/* Contact Cards */}
-              {contactInfo.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  className="glass-card rounded-2xl p-6 flex items-center gap-4 group hover:bg-white/10 transition-colors"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ x: 5 }}
-                >
+              {contactInfo.map((item, index) => {
+                const cardContent = (
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${item.color} flex items-center justify-center flex-shrink-0`}>
                     <item.icon size={22} className="text-white" />
                   </div>
-                  <div>
-                    <p className="text-sm text-slate-500">{item.label}</p>
-                    <p className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors">
-                      {item.value}
-                    </p>
-                  </div>
-                </motion.a>
-              ))}
+                );
+
+                if (item.href === null) {
+                  return (
+                    <EmailPicker key={item.label} className="w-full">
+                      <motion.div
+                        className="glass-card rounded-2xl p-6 flex items-center gap-4 group hover:bg-white/10 transition-colors cursor-pointer"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1 }}
+                        whileHover={{ x: 5 }}
+                      >
+                        {cardContent}
+                        <div>
+                          <p className="text-sm text-slate-500">{item.label}</p>
+                          <p className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors">
+                            {item.value}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </EmailPicker>
+                  );
+                }
+
+                return (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    className="glass-card rounded-2xl p-6 flex items-center gap-4 group hover:bg-white/10 transition-colors"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    whileHover={{ x: 5 }}
+                  >
+                    {cardContent}
+                    <div>
+                      <p className="text-sm text-slate-500">{item.label}</p>
+                      <p className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors">
+                        {item.value}
+                      </p>
+                    </div>
+                  </motion.a>
+                );
+              })}
 
               {/* Social Links */}
               <motion.div
