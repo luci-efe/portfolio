@@ -72,6 +72,15 @@ const projects: Project[] = [
     icon: Zap,
     github: 'https://github.com/luci-efe',
   },
+  {
+    title: 'SensorGrid',
+    description: 'IoT sensor data platform built on Cloudflare Workers for real-time sensor monitoring and data aggregation at the edge.',
+    metrics: 'Edge computing | Real-time data | Cloudflare Workers',
+    tags: ['TypeScript', 'Cloudflare', 'IoT'],
+    category: 'startup',
+    icon: Cloud,
+    github: 'https://github.com/luci-efe/sensorgrid-cloudflare',
+  },
   // Academic Projects
   {
     title: 'Data Structures',

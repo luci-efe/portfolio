@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import { EmailPicker } from '@/components/ui/EmailPicker';
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -46,14 +47,15 @@ export const Footer: React.FC = () => {
             >
               <Linkedin size={18} />
             </motion.a>
-            <motion.a
-              href="mailto:lramirez.ramos@iteso.mx"
-              className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:text-violet-500 hover:bg-white/10 transition-all"
-              whileHover={{ scale: 1.1, y: -3 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Mail size={18} />
-            </motion.a>
+            <EmailPicker placement="top">
+              <motion.div
+                className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:text-violet-500 hover:bg-white/10 transition-all"
+                whileHover={{ scale: 1.1, y: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Mail size={18} />
+              </motion.div>
+            </EmailPicker>
           </div>
 
           {/* Back to Top */}

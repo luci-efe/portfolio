@@ -78,6 +78,8 @@ const additionalSkills = [
   { name: 'Security', icon: Shield },
   { name: 'System Design', icon: Cpu },
   { name: 'Agile', icon: Workflow },
+  { name: 'Convex', icon: Database },
+  { name: 'Vite', icon: Code2 },
 ];
 
 export const Skills: React.FC = () => {

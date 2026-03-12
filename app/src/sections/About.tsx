@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Database, Brain, Cloud, Server, Terminal } from 'lucide-react';
+import { Code2, Database, Cloud, Server, Terminal } from 'lucide-react';
 import { CountUp } from '@/components/ui/CountUp';
 import { useInView } from '@/hooks/useInView';
 
@@ -16,7 +16,7 @@ const techStack = [
   { name: 'TypeScript', icon: Terminal, color: 'text-blue-400' },
   { name: 'Python', icon: Code2, color: 'text-yellow-400' },
   { name: 'PostgreSQL', icon: Database, color: 'text-emerald-400' },
-  { name: 'OpenAI', icon: Brain, color: 'text-violet-400' },
+  { name: 'Neon', icon: Cloud, color: 'text-emerald-300' },
   { name: 'Docker', icon: Server, color: 'text-blue-500' },
   { name: 'Cloudflare', icon: Cloud, color: 'text-orange-400' },
   { name: 'AWS', icon: Cloud, color: 'text-amber-400' },
@@ -114,8 +114,11 @@ export const About: React.FC = () => {
                   enterprise-grade security and reliability.
                 </p>
                 <p>
-                  Currently completing my Computer Systems Engineering degree at ITESO, 
+                  Currently completing my Computer Systems Engineering degree at ITESO,
                   graduating in December 2026.
+                </p>
+                <p>
+                  My philosophy: <span className="text-white font-semibold">"AI Orchestrator"</span>—I don't just write code, I orchestrate multiple AI agents to build complete solutions. This approach let me deliver a full-stack app (ReparaYa) solo in 2 weeks.
                 </p>
               </div>
             </div>

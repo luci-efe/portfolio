@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
+import { EmailPicker } from '@/components/ui/EmailPicker';
 
 const navLinks = [
   { name: 'Home', href: '#hero' },
@@ -97,13 +98,14 @@ export const Navigation: React.FC = () => {
               >
                 <Linkedin size={20} />
               </motion.a>
-              <motion.a
-                href="mailto:lramirez.ramos@iteso.mx"
-                className="text-slate-400 hover:text-white transition-colors"
-                whileHover={{ scale: 1.1, y: -2 }}
-              >
-                <Mail size={20} />
-              </motion.a>
+              <EmailPicker>
+                <motion.div
+                  className="text-slate-400 hover:text-white transition-colors"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                >
+                  <Mail size={20} />
+                </motion.div>
+              </EmailPicker>
             </div>
 
             {/* Mobile Menu Button */}
@@ -171,12 +173,11 @@ export const Navigation: React.FC = () => {
                   >
                     <Linkedin size={24} />
                   </a>
-                  <a
-                    href="mailto:lramirez.ramos@iteso.mx"
-                    className="text-slate-400 hover:text-white"
-                  >
-                    <Mail size={24} />
-                  </a>
+                  <EmailPicker>
+                    <div className="text-slate-400 hover:text-white">
+                      <Mail size={24} />
+                    </div>
+                  </EmailPicker>
                 </div>
               </div>
             </motion.div>
