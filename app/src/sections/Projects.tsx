@@ -29,10 +29,10 @@ const projects: Project[] = [
     link: 'https://agenticengineering.agency/',
   },
   {
-    title: 'Chatbot Demos',
-    description: 'Interactive demos showcasing various AI chatbot implementations and voice agents for different business use cases.',
-    metrics: 'Live demos | Multiple bot types | Interactive showcase',
-    tags: ['React', 'AI Integration', 'Voice Agents', 'Chatbots'],
+    title: 'AgentForge Platform',
+    description: 'The fully managed hosting platform for the AgentForge framework. Build agents locally, deploy to production in minutes. A single dashboard to manage every agent, every deployment, and every team member with real-time metrics and one-click actions.',
+    metrics: 'Managed hosting | One-click deploys | Real-time dashboard',
+    tags: ['React', 'TypeScript', 'Cloudflare', 'AI Agents'],
     category: 'startup',
     icon: Bot,
     link: 'https://agenticengineering.online/',
@@ -110,7 +110,7 @@ const projects: Project[] = [
     category: 'academic',
     icon: Wrench,
     github: 'https://github.com/luci-efe/sensorgrid-cloudflare',
-    downloadProposal: '/SensorGrid_Propuesta_Tecnica.pdf',
+    downloadProposal: '/SensorGrid_Propuesta_Desarrollo_v2.docx',
   },
   {
     title: 'ReparaYa',

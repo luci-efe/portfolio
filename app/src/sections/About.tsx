@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Database, Brain, Cloud, Server, Terminal, Users, Zap } from 'lucide-react';
+import { Code2, Database, Cloud, Server, Terminal, Users, Zap, GitBranch, Layers, Container } from 'lucide-react';
 import { CountUp } from '@/components/ui/CountUp';
 import { useInView } from '@/hooks/useInView';
 
@@ -16,10 +16,13 @@ const techStack = [
   { name: 'TypeScript', icon: Terminal, color: 'text-blue-400' },
   { name: 'Python', icon: Code2, color: 'text-yellow-400' },
   { name: 'PostgreSQL', icon: Database, color: 'text-emerald-400' },
-  { name: 'OpenAI', icon: Brain, color: 'text-violet-400' },
+  { name: 'Neon', icon: Database, color: 'text-teal-400' },
   { name: 'Docker', icon: Server, color: 'text-blue-500' },
   { name: 'Cloudflare', icon: Cloud, color: 'text-orange-400' },
   { name: 'Mastra', icon: Zap, color: 'text-pink-400' },
+  { name: 'Terraform', icon: Container, color: 'text-purple-400' },
+  { name: 'GitHub Actions', icon: GitBranch, color: 'text-slate-300' },
+  { name: 'Linear', icon: Layers, color: 'text-indigo-400' },
 ];
 
 export const About: React.FC = () => {
@@ -135,7 +138,7 @@ export const About: React.FC = () => {
                     <span>Always at cutting-edge technology (Mastra, RAG, Vector Search)</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <Brain size={16} className="text-violet-400" />
+                    <Zap size={16} className="text-violet-400" />
                     <span>Spec-Driven Development & AI-augmented workflows</span>
                   </li>
                   <li className="flex items-center gap-2">

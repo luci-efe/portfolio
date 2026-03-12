@@ -7,15 +7,21 @@ import {
   Github,
   Linkedin,
 } from 'lucide-react';
-import { EmailPicker } from '@/components/ui/EmailPicker';
 
 const contactInfo = [
   {
     icon: Mail,
-    label: 'Email',
+    label: 'Email (Primary)',
     value: 'fernando@agenticengineering.agency',
-    href: null,
+    href: 'mailto:fernando@agenticengineering.agency',
     color: 'from-violet-500 to-purple-500',
+  },
+  {
+    icon: Mail,
+    label: 'Email (ITESO)',
+    value: 'lramirez.ramos@iteso.mx',
+    href: 'mailto:lramirez.ramos@iteso.mx',
+    color: 'from-indigo-500 to-violet-500',
   },
   {
     icon: Phone,
@@ -88,57 +94,28 @@ export const Contact: React.FC = () => {
           className="space-y-6 max-w-xl mx-auto"
         >
           {/* Contact Cards */}
-          {contactInfo.map((item, index) => {
-            const iconBlock = (
+          {contactInfo.map((item, index) => (
+            <motion.a
+              key={item.label}
+              href={item.href}
+              className="glass-card rounded-2xl p-6 flex items-center gap-4 group hover:bg-white/10 transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              whileHover={{ x: 5 }}
+            >
               <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${item.color} flex items-center justify-center flex-shrink-0`}>
                 <item.icon size={22} className="text-white" />
               </div>
-            );
-
-            if (item.href === null) {
-              return (
-                <EmailPicker key={item.label} className="w-full">
-                  <motion.div
-                    className="glass-card rounded-2xl p-6 flex items-center gap-4 group hover:bg-white/10 transition-colors cursor-pointer"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
-                    whileHover={{ x: 5 }}
-                  >
-                    {iconBlock}
-                    <div>
-                      <p className="text-sm text-slate-500">{item.label}</p>
-                      <p className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors">
-                        {item.value}
-                      </p>
-                    </div>
-                  </motion.div>
-                </EmailPicker>
-              );
-            }
-
-            return (
-              <motion.a
-                key={item.label}
-                href={item.href}
-                className="glass-card rounded-2xl p-6 flex items-center gap-4 group hover:bg-white/10 transition-colors"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                whileHover={{ x: 5 }}
-              >
-                {iconBlock}
-                <div>
-                  <p className="text-sm text-slate-500">{item.label}</p>
-                  <p className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors">
-                    {item.value}
-                  </p>
-                </div>
-              </motion.a>
-            );
-          })}
+              <div>
+                <p className="text-sm text-slate-500">{item.label}</p>
+                <p className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors">
+                  {item.value}
+                </p>
+              </div>
+            </motion.a>
+          ))}
 
           {/* Social Links */}
           <motion.div
