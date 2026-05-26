@@ -1,0 +1,24 @@
+/**
+ * Cloudflare Workers — static-assets-only deployment for the Vite SPA build.
+ *
+ * - `assets.directory` points to the Vite `dist/` output.
+ * - `assets.not_found_handling` makes every unknown route serve `index.html`
+ *   so client-side routing (and direct deep-links / refresh on /any/path) works.
+ * - No `main` worker script: this is a pure static-asset deployment.
+ *
+ * Deploy:   npm run deploy   (from this directory)
+ * Tail:     npx wrangler tail fernando-ramos-portfolio
+ * Logout/who: npx wrangler whoami
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "fernando-ramos-portfolio",
+  "compatibility_date": "2026-05-20",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
