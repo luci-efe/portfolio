@@ -9,19 +9,19 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative py-12 bg-[#0a0a0f] border-t border-white/5">
+    <footer className="relative py-12 border-t hairline">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo & Copyright */}
           <div className="text-center md:text-left">
             <motion.span
-              className="text-2xl font-bold text-gradient block mb-2"
-              whileHover={{ scale: 1.05 }}
+              className="font-serif-display text-2xl ink block mb-1"
+              whileHover={{ scale: 1.02 }}
             >
               Fernando Ramos
             </motion.span>
-            <p className="text-sm text-slate-500">
-              © {new Date().getFullYear()} All rights reserved.
+            <p className="mono-meta">
+              © {new Date().getFullYear()} · built solo · view source on github
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export const Footer: React.FC = () => {
               href="https://github.com/luci-efe"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all"
+              className="w-10 h-10 rounded-md border hairline flex items-center justify-center ink-dim hover:text-amber hover:border-amber-500/50 transition-all"
               whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -41,7 +41,7 @@ export const Footer: React.FC = () => {
               href="https://linkedin.com/in/fernando-ramos-654514262"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:text-blue-500 hover:bg-white/10 transition-all"
+              className="w-10 h-10 rounded-md border hairline flex items-center justify-center ink-dim hover:text-amber hover:border-amber-500/50 transition-all"
               whileHover={{ scale: 1.1, y: -3 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -49,7 +49,7 @@ export const Footer: React.FC = () => {
             </motion.a>
             <EmailPicker placement="top">
               <motion.div
-                className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center text-slate-400 hover:text-violet-500 hover:bg-white/10 transition-all"
+                className="w-10 h-10 rounded-md border hairline flex items-center justify-center ink-dim hover:text-amber hover:border-amber-500/50 transition-all"
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -61,12 +61,12 @@ export const Footer: React.FC = () => {
           {/* Back to Top */}
           <motion.button
             onClick={scrollToTop}
-            className="px-4 py-2 rounded-lg bg-gradient-to-r from-violet-600 to-indigo-600 flex items-center justify-center text-white text-sm font-medium"
-            whileHover={{ scale: 1.05, y: -3 }}
-            whileTap={{ scale: 0.95 }}
+            className="font-mono-ui px-4 py-2 rounded-md border hairline ink-dim hover:text-amber hover:border-amber-500/50 flex items-center justify-center text-xs uppercase tracking-[0.18em] transition-colors"
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.97 }}
           >
-            <ArrowUp size={16} className="mr-2" />
-            Go back to top
+            <ArrowUp size={14} className="mr-2" />
+            top
           </motion.button>
         </div>
 

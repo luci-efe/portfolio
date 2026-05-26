@@ -4,12 +4,11 @@ import { Menu, X, Github, Linkedin, Mail } from 'lucide-react';
 import { EmailPicker } from '@/components/ui/EmailPicker';
 
 const navLinks = [
-  { name: 'Home', href: '#hero' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Contact', href: '#contact' },
+  { name: '00_home', href: '#hero' },
+  { name: '01_about', href: '#about' },
+  { name: '02_work', href: '#projects' },
+  { name: '03_log', href: '#experience' },
+  { name: '04_contact', href: '#contact' },
 ];
 
 export const Navigation: React.FC = () => {
@@ -52,11 +51,14 @@ export const Navigation: React.FC = () => {
                 e.preventDefault();
                 scrollToSection('#hero');
               }}
-              className="text-xl font-bold text-gradient"
-              whileHover={{ scale: 1.05 }}
+              className="font-mono-ui text-sm tracking-[0.3em] ink flex items-center gap-2"
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.95 }}
             >
-              FR
+              <span className="text-amber">/</span>
+              <span>FR</span>
+              <span className="ink-faint">·</span>
+              <span className="ink-dim">portfolio</span>
             </motion.a>
 
             {/* Desktop Navigation */}
@@ -69,41 +71,50 @@ export const Navigation: React.FC = () => {
                     e.preventDefault();
                     scrollToSection(link.href);
                   }}
-                  className="text-sm font-medium text-slate-400 hover:text-white transition-colors relative group"
-                  whileHover={{ y: -2 }}
+                  className="font-mono-ui text-xs uppercase tracking-[0.18em] ink-dim hover:text-amber transition-colors relative group"
+                  whileHover={{ y: -1 }}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-violet-500 to-cyan-500 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-amber-500 transition-all duration-300 group-hover:w-full" />
                 </motion.a>
               ))}
             </div>
 
-            {/* Social Icons */}
-            <div className="hidden md:flex items-center gap-4">
+            {/* Status + Social */}
+            <div className="hidden md:flex items-center gap-5">
+              <div className="hidden lg:flex items-center gap-2 mono-meta">
+                <span className="relative flex h-2 w-2">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-500/80 opacity-70 animate-ping" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                </span>
+                <span>status: available</span>
+              </div>
               <motion.a
                 href="https://github.com/luci-efe"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-                whileHover={{ scale: 1.1, y: -2 }}
+                aria-label="GitHub"
+                className="ink-dim hover:text-amber transition-colors"
+                whileHover={{ y: -1 }}
               >
-                <Github size={20} />
+                <Github size={18} />
               </motion.a>
               <motion.a
                 href="https://linkedin.com/in/fernando-ramos-654514262"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-slate-400 hover:text-white transition-colors"
-                whileHover={{ scale: 1.1, y: -2 }}
+                aria-label="LinkedIn"
+                className="ink-dim hover:text-amber transition-colors"
+                whileHover={{ y: -1 }}
               >
-                <Linkedin size={20} />
+                <Linkedin size={18} />
               </motion.a>
               <EmailPicker>
                 <motion.div
-                  className="text-slate-400 hover:text-white transition-colors"
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="ink-dim hover:text-amber transition-colors"
+                  whileHover={{ y: -1 }}
                 >
-                  <Mail size={20} />
+                  <Mail size={18} />
                 </motion.div>
               </EmailPicker>
             </div>

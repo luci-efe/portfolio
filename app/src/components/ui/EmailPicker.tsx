@@ -59,7 +59,7 @@ export const EmailPicker: React.FC<EmailPickerProps> = ({
               onClick={() => setOpen(false)}
             >
               <span className="text-sm font-medium text-white break-all">{PRIMARY_EMAIL}</span>
-              <span className="text-xs text-violet-400">Primary</span>
+              <span className="text-xs text-amber-soft">Primary</span>
             </a>
             <a
               href={`mailto:${SECONDARY_EMAIL}`}

@@ -1,187 +1,238 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Bot, Shield, Zap, MessageSquare, Phone, Car, Wrench, Sparkles, LineChart, X } from 'lucide-react';
-import { Card3D } from '@/components/ui/Card3D';
+import { ArrowUpRight, Phone, MessageSquare, X, FileText } from 'lucide-react';
 import { SkillBadge } from '@/components/ui/SkillBadge';
 
+type Category = 'enterprise' | 'agentic' | 'academic';
+type Band = 'product' | 'oss';
+
+interface DocLink {
+  label: string;
+  href: string;
+}
+
 interface Project {
+  caseId: string;
+  year: string;
   title: string;
   description: string;
   metrics: string;
   tags: string[];
-  category: 'enterprise' | 'startup' | 'academic';
-  icon: React.ElementType;
+  category: Category;
+  band?: Band;
   link?: string;
   github?: string;
+  npm?: string;
   showContact?: boolean;
-  downloadProposal?: string;
+  docs?: DocLink[];
 }
 
 const projects: Project[] = [
-  // Startup Projects - Agentic Engineering (First)
   {
-    title: 'Agentic Engineering',
-    description: 'AI automation agency landing page. Combines cutting-edge AI technology with expert software development to deliver solutions that push boundaries.',
-    metrics: 'Live site | Modern design | AI-focused branding',
-    tags: ['React', 'TypeScript', 'Cloudflare', 'Modern UI'],
-    category: 'startup',
-    icon: Sparkles,
-    link: 'https://agenticengineering.agency/',
-  },
-  {
-    title: 'AgentForge Platform',
-    description: 'The fully managed hosting platform for the AgentForge framework. Build agents locally, deploy to production in minutes. A single dashboard to manage every agent, every deployment, and every team member with real-time metrics and one-click actions.',
-    metrics: 'Managed hosting | One-click deploys | Real-time dashboard',
-    tags: ['React', 'TypeScript', 'Cloudflare', 'AI Agents'],
-    category: 'startup',
-    icon: Bot,
+    caseId: 'case_01',
+    year: '2025 →',
+    title: 'Curia',
+    description:
+      'Legal AI for Mexican law firms. Automated court monitoring, deadline tracking, document analysis, and cited-source verification — one reliable layer of legal work for litigators and partners.',
+    metrics: 'flagship b2b product · active client onboarding · mexican law firms',
+    tags: ['Legal AI', 'Multi-Agent', 'Mastra', 'Cloudflare', 'TypeScript'],
+    category: 'agentic',
+    band: 'product',
     link: 'https://agenticengineering.online/',
   },
   {
+    caseId: 'case_02',
+    year: '2025 →',
+    title: 'Agentic Engineering',
+    description:
+      'AI-native engineering agency. Full-stack AI products, agent workflows, and production systems — designed with senior engineering review from day one. The shop behind Curia, SpecSafe, and Ultimate Harness.',
+    metrics: 'co-founded dec 2025 · pre-seed · team of 4',
+    tags: ['Agency', 'AI Systems', 'Multi-Agent', 'Production'],
+    category: 'agentic',
+    band: 'product',
+    link: 'https://agenticengineering.agency/',
+  },
+  {
+    caseId: 'oss_01',
+    year: '2025',
     title: 'SpecSafe',
-    description: 'Spec-driven development (SDD) CLI framework for AI-assisted software engineering. Published on npm with 10+ commands for managing specs, generating tests, and tracking implementation stages. Features integrations with Cursor, Continue.dev, Aider, and Zed.',
-    metrics: 'npm: 400+ downloads | 139 tests | 10 CLI commands | AI coding tool integrations',
-    tags: ['TypeScript', 'Vitest', 'Open Source', 'Spec-Driven Development', 'CLI', 'npm'],
-    category: 'startup',
-    icon: Shield,
-    link: 'https://www.npmjs.com/package/@specsafe/cli',
+    description:
+      'A skills-first framework that keeps AI coding agents aligned with human intent through specifications, test-driven implementation, and QA gates. Supports 8 AI tools across 3 integration tiers.',
+    metrics: 'oss · npm package · 8 ai tools · 3 integration tiers',
+    tags: ['TypeScript', 'Vitest', 'TDD', 'CLI', 'AI Agents'],
+    category: 'agentic',
+    band: 'oss',
+    link: 'https://specsafe.agenticengineering.lat/',
     github: 'https://github.com/Agentic-Engineering-Agency/specsafe',
+    npm: 'https://www.npmjs.com/package/@specsafe/cli',
   },
   {
-    title: 'Defade.app',
-    description: 'B2C AI-powered automation product for personal productivity. Early-stage product with active user testing and iteration.',
-    metrics: '~10 active users | User testing | Product iteration',
-    tags: ['React', 'TypeScript', 'AI', 'Cloudflare'],
-    category: 'startup',
-    icon: Zap,
-    link: 'https://defade.app/',
+    caseId: 'oss_02',
+    year: '2025',
+    title: 'Ultimate Harness',
+    description:
+      'One harness. Every coding agent. Portable discipline. Plans, launches, observes, verifies, and promotes agentic software-development work across Hermes, Codex, Hermes Proxy, and Oh-My-Pi — without losing your specs, sandbox boundaries, or audit trail.',
+    metrics: 'oss · multi-agent runner · audit-trail first',
+    tags: ['CLI', 'Sandboxing', 'TUI', 'Audit Trail', 'Agent Tooling'],
+    category: 'agentic',
+    band: 'oss',
+    link: 'https://uh.agenticengineering.lat/',
   },
   {
-    title: 'Price Genius',
-    description: 'AI-powered price comparison and optimization tool. Deployed for testing but not yet production-ready.',
-    metrics: 'Testing phase | Not production-ready | In development',
-    tags: ['React', 'TypeScript', 'AI', 'Data Analysis'],
-    category: 'startup',
-    icon: LineChart,
-    link: 'https://pricegenius.org/',
+    caseId: 'oss_03',
+    year: '2025',
+    title: 'The Playbook',
+    description:
+      'Documentation for the kits and workflows we use to ship with AI agents. A growing index of installable kits, install commands, and repositories — the operating manual for agentic engineering.',
+    metrics: 'oss docs hub · kits + workflows · public knowledge base',
+    tags: ['Docs', 'Open Source', 'Agentic Workflows', 'DX'],
+    category: 'agentic',
+    band: 'oss',
+    link: 'https://labs.agenticengineering.agency/',
   },
-  // Enterprise Projects - Tendencia Systems (Second)
   {
-    title: 'AI Voicebots - Teruya & Sterling',
-    description: 'Bilingual voice agents (EN/ES) for Florida law firm handling new client intake, collections, and reception. Integrated with Vapi, OpenAI, Twilio, and Zoho CRM for seamless workflow automation.',
-    metrics: '6 bots | 700+ calls/month (40% of firm volume) | 60% cost reduction',
-    tags: ['Vapi', 'OpenAI', 'n8n', 'Twilio', 'ElevenLabs', 'Zoho CRM', 'Supabase'],
+    caseId: 'case_03',
+    year: '2024–25',
+    title: 'AI Voicebots — Teruya & Sterling',
+    description:
+      'Bilingual (EN/ES) voice agents for a Florida law firm handling new-client intake, collections, and reception. Integrated with Vapi, OpenAI, Twilio, and Zoho CRM. Replaced additional reception hires and freed attorneys for billable work.',
+    metrics: '6 bots · 700+ calls/month (~40% of inbound) · 60% cost reduction',
+    tags: ['Vapi', 'OpenAI', 'n8n', 'Twilio', 'ElevenLabs', 'Zoho CRM'],
     category: 'enterprise',
-    icon: Phone,
     showContact: true,
   },
   {
-    title: 'Insurance Quote System',
-    description: 'Revolutionary RAG-based vehicle matching system processing 300K+ records across 11 insurance APIs. Replaced failed ETL approach with vector embeddings and semantic search.',
-    metrics: '300K+ records | 80%+ accuracy | 11 providers integrated',
-    tags: ['Python', 'PostgreSQL', 'Vector Embeddings', 'RAG', 'n8n', 'Microsoft SQL Server'],
+    caseId: 'case_04',
+    year: '2025',
+    title: 'Insurance Quote RAG',
+    description:
+      'RAG-based vehicle matching across 11 Mexican insurance APIs with heterogeneous schemas. Replaced a failed ETL approach with vector embeddings and semantic search over 300,000+ vehicle records.',
+    metrics: '300k+ records · 80%+ matching accuracy · 11 provider apis',
+    tags: ['Python', 'PostgreSQL', 'Vector Embeddings', 'RAG', 'n8n'],
     category: 'enterprise',
-    icon: Car,
   },
   {
-    title: 'Medical Center Lead Gen',
-    description: 'WhatsApp chatbot for Sta. Austin Medical Center in Querétaro. Automated lead qualification, onboarding, and appointment scheduling, delivering hot leads to sales team daily.',
-    metrics: 'Daily qualified leads | 24/7 availability | Zero scope creep delivery',
-    tags: ['n8n', 'Supabase', 'HubSpot', 'Google Cloud', 'Digital Ocean'],
+    caseId: 'case_05',
+    year: '2025',
+    title: 'Medical Lead Gen — Sta. Austin',
+    description:
+      'WhatsApp chatbot for Sta. Austin Medical Center in Querétaro. Automated lead qualification, onboarding, and appointment scheduling — routed qualified leads to the sales team daily.',
+    metrics: 'daily qualified leads · 24/7 availability · zero scope creep',
+    tags: ['n8n', 'Supabase', 'HubSpot', 'Google Cloud'],
     category: 'enterprise',
-    icon: MessageSquare,
-    showContact: true,
   },
   {
+    caseId: 'case_06',
+    year: '2025',
     title: 'Autos Hitti Lead Gen',
-    description: 'WhatsApp chatbot for car dealership capturing leads interested in buying vehicles. Qualifies prospects, completes onboarding, and schedules appointments with sales consultants when customers show interest in specific models or request to book.',
-    metrics: 'Hundreds of leads monthly | Daily appointments scheduled | Hot lead delivery',
-    tags: ['n8n', 'Supabase', 'WhatsApp API', 'Lead Qualification'],
+    description:
+      'WhatsApp chatbot for a car dealership capturing buyers, qualifying prospects, completing onboarding, and scheduling appointments with sales consultants when customers signal intent.',
+    metrics: 'hundreds of leads monthly · daily appointments scheduled',
+    tags: ['n8n', 'Supabase', 'WhatsApp API'],
     category: 'enterprise',
-    icon: MessageSquare,
     showContact: true,
   },
-  // Academic Projects - ITESO (Last)
   {
-    title: 'SensorGrid Labs',
-    description: 'IoT environmental monitoring system for ITESO cafeteria kitchens. Real-time temperature monitoring for refrigerators, air quality sensors (COVs, PM2.5), door status detection, and automated Telegram alerts. 100% cloud-native architecture with LoRaWAN connectivity.',
-    metrics: 'Team of 4 | 12-week project | LoRaWAN + Cloudflare + IoT sensors',
-    tags: ['ESP32', 'LoRaWAN', 'Cloudflare Workers', 'InfluxDB', 'Grafana', 'IoT', 'TypeScript'],
+    caseId: 'lab_01',
+    year: '2026',
+    title: 'SensorGrid',
+    description:
+      'IoT environmental monitoring for ITESO cafeteria kitchens: real-time refrigerator temperature, air-quality sensors (COVs, PM2.5), door-state detection, automated Telegram alerts. Cloud-native on LoRaWAN. Presented at the 3er Congreso de Ingenierías SUJ 2026.',
+    metrics: 'team of 4 · 12 weeks · lorawan + cloudflare + iot · published',
+    tags: ['ESP32', 'LoRaWAN', 'Cloudflare Workers', 'InfluxDB', 'Grafana'],
     category: 'academic',
-    icon: Wrench,
     github: 'https://github.com/luci-efe/sensorgrid-cloudflare',
-    downloadProposal: '/SensorGrid_Propuesta_Desarrollo_v2.docx',
+    docs: [
+      { label: 'IEEE Paper', href: '/SensorGrid_IEEE_Access.pdf' },
+      { label: 'Resumen', href: '/SensorGrid_Resumen.pdf' },
+      { label: 'Cartel', href: '/SensorGrid_Cartel.pdf' },
+    ],
   },
   {
+    caseId: 'lab_02',
+    year: '2025',
+    title: 'Fraud Detector',
+    description:
+      'MLOps final project: end-to-end training and deployment of a fraud-detection model. XGBoost trained with DVC + MLflow, exported to ONNX, served via inference API on Cloudflare Workers + Containers — edge fraud detection.',
+    metrics: 'mlops end-to-end · xgboost + onnx · cloudflare workers + containers',
+    tags: ['Python', 'XGBoost', 'DVC', 'MLflow', 'ONNX', 'Cloudflare'],
+    category: 'academic',
+    link: 'https://fraud-detector-frontend.pages.dev/',
+  },
+  {
+    caseId: 'lab_03',
+    year: '2025',
+    title: 'Billi',
+    description:
+      'Asistente financiero personal para profesionistas con deudas — ayuda a entender la situación financiera, organizar gastos y crear un plan para mejorar la salud económica.',
+    metrics: 'class project · personal finance · spanish-language ux',
+    tags: ['Next.js', 'Financial Tooling', 'UX'],
+    category: 'academic',
+    link: 'https://www.billi.lat/landing',
+  },
+  {
+    caseId: 'lab_04',
+    year: '2025',
+    title: 'AURA',
+    description:
+      'Venture pitch deck for Innovación y Emprendimiento. Self-contained offline HTML deck presenting the AURA concept, market, and roadmap — built as an interactive web artifact rather than a slide file.',
+    metrics: 'pitch deck · innovación y emprendimiento · self-contained html',
+    tags: ['Pitch Deck', 'Web Artifact', 'Entrepreneurship'],
+    category: 'academic',
+    docs: [{ label: 'Open Pitch Deck', href: '/AURA_Pitch_Deck.html' }],
+  },
+  {
+    caseId: 'lab_05',
+    year: '2024',
     title: 'ReparaYa',
-    description: 'Full-stack platform connecting contractors with homeowners needing domestic services. Built solo in 2 weeks when team failed to contribute. Validated "AI Orchestrator" concept.',
-    metrics: 'Solo project | 2 weeks delivery | AI-orchestrated development',
+    description:
+      'Full-stack platform connecting contractors with homeowners needing domestic services. Built solo in 2 weeks when teammates dropped — the proof-of-concept for the AI-orchestrator workflow I now use in production.',
+    metrics: 'solo delivery · 2 weeks · ai-orchestrated full stack',
     tags: ['Next.js', 'Vercel', 'PostgreSQL', 'AI Orchestration'],
     category: 'academic',
-    icon: Wrench,
     link: 'https://repara-ya-mu.vercel.app/',
     github: 'https://github.com/luci-efe/ReparaYa',
   },
 ];
 
-const categoryConfig = {
-  enterprise: { 
-    label: 'Enterprise', 
-    color: 'text-cyan-400', 
-    bgColor: 'bg-cyan-500/10',
-    borderColor: 'border-cyan-500/20',
-    glowColor: 'rgba(6, 182, 212, 0.3)',
-    description: 'Production systems at Tendencia Systems'
+const categoryConfig: Record<Category, { label: string; slug: string; description: string }> = {
+  agentic: {
+    label: 'Agentic Engineering',
+    slug: '02a',
+    description: 'co-founder · flagship b2b product + open-source agent tooling',
   },
-  startup: { 
-    label: 'Startup', 
-    color: 'text-orange-400', 
-    bgColor: 'bg-orange-500/10',
-    borderColor: 'border-orange-500/20',
-    glowColor: 'rgba(249, 115, 22, 0.3)',
-    description: 'Agentic Engineering products & experiments'
+  enterprise: {
+    label: 'Tendencia Systems',
+    slug: '02b',
+    description: 'production systems shipped as software dev → tech pm',
   },
-  academic: { 
-    label: 'Academic', 
-    color: 'text-emerald-400', 
-    bgColor: 'bg-emerald-500/10',
-    borderColor: 'border-emerald-500/20',
-    glowColor: 'rgba(16, 185, 129, 0.3)',
-    description: 'ITESO coursework & personal projects'
+  academic: {
+    label: 'ITESO',
+    slug: '02c',
+    description: 'coursework, research, and venture concepts',
   },
 };
 
+const bandConfig: Record<Band, { label: string; sublabel: string }> = {
+  product: { label: 'B2B Product', sublabel: 'commercial product, paying clients' },
+  oss: { label: 'Open Source', sublabel: 'public tooling, docs, repos' },
+};
+
+const VOICEBOT_NUMBERS = [
+  { pair: 'New Client / Nuevo Cliente', purpose: 'Opening new legal cases', en: '+1 (786) 530-2445', es: '+1 (786) 999-2571' },
+  { pair: 'Collections / Cobranzas', purpose: 'Payment registration and billing inquiries', en: '+1 (786) 999-2458', es: '+1 (786) 999-2461' },
+  { pair: 'Existing Client / Cliente Existente', purpose: 'Reception, case updates, and consultations', en: '+1 (786) 999-2463', es: '+1 (786) 999-2464' },
+];
+
 const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitle: string }> = ({ isOpen, onClose, projectTitle }) => {
   const isVoicebot = projectTitle.includes('Voicebots');
-  const isAutosHitti = projectTitle.includes('Autos Hitti');
-  
-  const voicebotNumbers = [
-    {
-      pair: 'New Client / Nuevo Cliente',
-      purpose: 'Opening new legal cases',
-      en: '+1 (786) 530-2445',
-      es: '+1 (786) 999-2571'
-    },
-    {
-      pair: 'Collections / Cobranzas',
-      purpose: 'Payment registration and billing inquiries',
-      en: '+1 (786) 999-2458',
-      es: '+1 (786) 999-2461'
-    },
-    {
-      pair: 'Existing Client / Cliente Existente',
-      purpose: 'Reception, case updates, and consultations',
-      en: '+1 (786) 999-2463',
-      es: '+1 (786) 999-2464'
-    }
-  ];
-  
+
   return (
     <AnimatePresence>
       {isOpen && (
         <>
           <motion.div
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -189,126 +240,75 @@ const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitl
           />
           <motion.div
             className="fixed inset-0 flex items-center justify-center z-50 p-4"
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
+            exit={{ opacity: 0, scale: 0.95 }}
           >
-            <div className="glass-card rounded-2xl p-8 max-w-2xl w-full relative max-h-[90vh] overflow-y-auto">
-              <button
-                onClick={onClose}
-                className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
-              >
-                <X size={24} />
-              </button>
-              
-              {isVoicebot ? (
-                <>
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    AI Voicebots - Teruya & Sterling
-                  </h3>
-                  <p className="text-slate-400 mb-6">
-                    Florida law firm voice agents. Call any number to experience the bots in action. Available 24/7.
-                  </p>
-                  
-                  <div className="space-y-4">
-                    {voicebotNumbers.map((bot, index) => (
-                      <div 
-                        key={index}
-                        className="p-4 rounded-xl bg-white/5 border border-white/10"
-                      >
-                        <h4 className="text-lg font-semibold text-cyan-400 mb-1">{bot.pair}</h4>
-                        <p className="text-sm text-slate-400 mb-3">{bot.purpose}</p>
-                        
-                        <div className="grid sm:grid-cols-2 gap-3">
-                          <a
-                            href={`tel:${bot.en.replace(/[\s()-]/g, '')}`}
-                            className="flex items-center gap-2 p-3 rounded-lg bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
-                          >
-                            <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">EN</span>
-                            <Phone size={16} className="text-blue-400" />
-                            <span className="text-white font-medium">{bot.en}</span>
-                          </a>
-                          
-                          <a
-                            href={`tel:${bot.es.replace(/[\s()-]/g, '')}`}
-                            className="flex items-center gap-2 p-3 rounded-lg bg-orange-500/10 border border-orange-500/20 hover:bg-orange-500/20 transition-colors"
-                          >
-                            <span className="text-xs font-medium text-orange-400 uppercase tracking-wider">ES</span>
-                            <Phone size={16} className="text-orange-400" />
-                            <span className="text-white font-medium">{bot.es}</span>
-                          </a>
+            <div className="terminal-block p-0 max-w-2xl w-full relative max-h-[88vh] overflow-y-auto">
+              <div className="flex items-center gap-3 px-5 py-3 border-b hairline">
+                <span className="w-2 h-2 bg-amber-500" />
+                <span className="mono-meta flex-1">~/{isVoicebot ? 'teruya_sterling' : 'autos_hitti'}/try.sh</span>
+                <button onClick={onClose} aria-label="Close" className="ink-faint hover:text-amber transition-colors">
+                  <X size={18} />
+                </button>
+              </div>
+
+              <div className="p-6">
+                {isVoicebot ? (
+                  <>
+                    <h3 className="font-serif-display text-3xl ink mb-2">AI Voicebots</h3>
+                    <p className="mono-meta mb-6">teruya &amp; sterling · florida law firm · 24/7</p>
+
+                    <div className="space-y-3">
+                      {VOICEBOT_NUMBERS.map((bot) => (
+                        <div key={bot.pair} className="border hairline p-4 bg-white/[0.02]">
+                          <div className="mono-kicker mb-1">{bot.pair}</div>
+                          <p className="text-sm ink-dim mb-3">{bot.purpose}</p>
+                          <div className="grid sm:grid-cols-2 gap-2">
+                            <a href={`tel:${bot.en.replace(/[\s()-]/g, '')}`} className="flex items-center gap-2 p-2 border hairline hover:border-amber-500/50 transition-colors">
+                              <span className="mono-meta">EN</span>
+                              <Phone size={14} className="text-amber-soft" />
+                              <span className="font-mono-ui text-xs ink">{bot.en}</span>
+                            </a>
+                            <a href={`tel:${bot.es.replace(/[\s()-]/g, '')}`} className="flex items-center gap-2 p-2 border hairline hover:border-amber-500/50 transition-colors">
+                              <span className="mono-meta">ES</span>
+                              <Phone size={14} className="text-amber-soft" />
+                              <span className="font-mono-ui text-xs ink">{bot.es}</span>
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <div className="mt-6 p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/10">
-                    <p className="text-sm text-slate-400">
-                      <strong className="text-cyan-400">Capabilities:</strong> New client intake, collections follow-up, case status inquiries, appointment scheduling, and general reception. All calls are logged to Zoho CRM with AI-generated summaries.
+                      ))}
+                    </div>
+
+                    <p className="mt-6 text-sm ink-dim">
+                      <span className="text-amber-soft">capabilities:</span> new client intake, collections follow-up, case status, appointment scheduling, reception. All calls logged to Zoho CRM with AI-generated summaries.
                     </p>
-                  </div>
-                </>
-              ) : isAutosHitti ? (
-                <>
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    WhatsApp Chatbot
-                  </h3>
-                  <p className="text-slate-400 mb-6">Autos Hitti - Car Dealership</p>
-                  
-                  <a
-                    href="https://wa.me/13341711743"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors mb-6"
-                  >
-                    <MessageSquare size={24} className="text-emerald-400" />
-                    <div>
-                      <span className="text-white font-medium block text-lg">+52 1 33 4171 1743</span>
-                      <span className="text-sm text-slate-400">Click to open WhatsApp</span>
-                    </div>
-                  </a>
-                  
-                  <div className="space-y-2 text-sm text-slate-400">
-                    <p><strong className="text-emerald-400">Features:</strong></p>
-                    <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li>Lead capture for car buyers</li>
-                      <li>Vehicle model inquiries</li>
-                      <li>Appointment scheduling with sales consultants</li>
-                      <li>Hot lead delivery to sales team</li>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="font-serif-display text-3xl ink mb-2">Autos Hitti</h3>
+                    <p className="mono-meta mb-6">whatsapp chatbot · car dealership</p>
+                    <a
+                      href="https://wa.me/13341711743"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 border hairline hover:border-amber-500/50 transition-colors mb-6"
+                    >
+                      <MessageSquare size={20} className="text-amber-soft" />
+                      <div>
+                        <div className="font-mono-ui ink">+52 1 33 4171 1743</div>
+                        <div className="mono-meta">click to open whatsapp</div>
+                      </div>
+                    </a>
+                    <ul className="text-sm ink-dim space-y-1.5">
+                      <li><span className="text-amber-soft">+</span> Lead capture for car buyers</li>
+                      <li><span className="text-amber-soft">+</span> Vehicle model inquiries</li>
+                      <li><span className="text-amber-soft">+</span> Appointment scheduling with sales consultants</li>
+                      <li><span className="text-amber-soft">+</span> Hot lead delivery to sales team</li>
                     </ul>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    WhatsApp Chatbot
-                  </h3>
-                  <p className="text-slate-400 mb-6">Sta. Austin Medical Center - Querétaro</p>
-                  
-                  <a
-                    href="https://wa.me/4423864653"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors mb-6"
-                  >
-                    <MessageSquare size={24} className="text-emerald-400" />
-                    <div>
-                      <span className="text-white font-medium block text-lg">+52 442 386 4653</span>
-                      <span className="text-sm text-slate-400">Click to open WhatsApp</span>
-                    </div>
-                  </a>
-                  
-                  <div className="space-y-2 text-sm text-slate-400">
-                    <p><strong className="text-emerald-400">Features:</strong></p>
-                    <ul className="list-disc list-inside space-y-1 ml-2">
-                      <li>Automated lead qualification</li>
-                      <li>Appointment scheduling</li>
-                      <li>Service information</li>
-                      <li>Hot lead alerts to sales team</li>
-                    </ul>
-                  </div>
-                </>
-              )}
+                  </>
+                )}
+              </div>
             </div>
           </motion.div>
         </>
@@ -319,175 +319,176 @@ const ContactModal: React.FC<{ isOpen: boolean; onClose: () => void; projectTitl
 
 const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
   const [showModal, setShowModal] = useState(false);
-  const config = categoryConfig[project.category];
-  
+  const isB2B = project.band === 'product';
+
   return (
     <>
-      <Card3D className="h-full" intensity={8} glowColor={config.glowColor}>
-        <motion.div
-          className="glass-card rounded-2xl p-6 h-full flex flex-col"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-        >
-          {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div className={`w-12 h-12 rounded-xl ${config.bgColor} flex items-center justify-center`}>
-              <project.icon size={24} className={config.color} />
-            </div>
-            <span className={`text-xs font-medium px-3 py-1 rounded-full ${config.bgColor} ${config.color} border ${config.borderColor}`}>
-              {config.label}
-            </span>
-          </div>
+      <motion.article
+        className={`dossier flex flex-col ${isB2B ? 'dossier-b2b' : ''}`}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.45, delay: index * 0.06 }}
+      >
+        <header className="flex items-center justify-between mb-5 pb-3 border-b hairline">
+          <span className="mono-meta">
+            {project.caseId} <span className="ink-faint">/</span> {project.year}
+          </span>
+          {project.band && (
+            <span className="mono-meta text-amber/80">{bandConfig[project.band].label.toLowerCase()}</span>
+          )}
+        </header>
 
-          {/* Title */}
-          <h3 className="text-xl font-bold text-white mb-2">
-            {project.title}
-          </h3>
+        <h3 className="font-serif-display text-3xl sm:text-[2rem] ink leading-[1.05] mb-3">
+          {project.title}
+        </h3>
 
-          {/* Description */}
-          <p className="text-slate-400 text-sm leading-relaxed mb-4 flex-grow">
-            {project.description}
-          </p>
+        <p className="text-[0.92rem] ink-dim leading-relaxed mb-5 flex-grow">
+          {project.description}
+        </p>
 
-          {/* Metrics */}
-          <div className="mb-4 p-3 rounded-lg bg-white/5 border border-white/10">
-            <p className="text-xs text-cyan-400 font-medium">{project.metrics}</p>
-          </div>
+        <div className="mb-5 pt-3 border-t hairline">
+          <p className="mono-meta text-amber-soft/90">{project.metrics}</p>
+        </div>
 
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag) => (
-              <SkillBadge key={tag}>{tag}</SkillBadge>
-            ))}
-          </div>
+        <div className="flex flex-wrap gap-1.5 mb-5">
+          {project.tags.map((tag) => (
+            <SkillBadge key={tag}>{tag}</SkillBadge>
+          ))}
+        </div>
 
-          {/* Action Buttons */}
-          <div className="flex items-center gap-3 mt-auto">
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-sm font-semibold hover:from-cyan-500 hover:to-blue-500 transition-all shadow-lg shadow-cyan-500/20"
-              >
-                <ExternalLink size={16} />
-                Visit Website
-              </a>
-            )}
-            {project.showContact && (
-              <button
-                onClick={() => setShowModal(true)}
-                className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white text-sm font-semibold hover:bg-white/20 transition-all"
-              >
-                <Phone size={16} />
-                Try It
-              </button>
-            )}
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center w-12 h-12 rounded-xl bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 transition-all"
-              >
-                <Github size={18} />
-              </a>
-            )}
-            {project.downloadProposal && (
-              <a
-                href={project.downloadProposal}
-                download
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-semibold hover:bg-emerald-500/20 transition-all"
-              >
-                <ExternalLink size={16} />
-                Download Proposal
-              </a>
-            )}
-          </div>
-        </motion.div>
-      </Card3D>
-      
-      <ContactModal 
-        isOpen={showModal} 
-        onClose={() => setShowModal(false)} 
-        projectTitle={project.title}
-      />
+        <footer className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-auto">
+          {project.link && (
+            <a href={project.link} target="_blank" rel="noopener noreferrer" className="cmd-link">
+              open_site
+              <ArrowUpRight size={11} />
+            </a>
+          )}
+          {project.showContact && (
+            <button onClick={() => setShowModal(true)} className="cmd-link">
+              try_it
+              <Phone size={11} />
+            </button>
+          )}
+          {project.github && (
+            <a href={project.github} target="_blank" rel="noopener noreferrer" className="cmd-link-muted">
+              source
+              <ArrowUpRight size={11} />
+            </a>
+          )}
+          {project.npm && (
+            <a href={project.npm} target="_blank" rel="noopener noreferrer" className="cmd-link-muted">
+              npm
+              <ArrowUpRight size={11} />
+            </a>
+          )}
+          {project.docs?.map((doc) => (
+            <a key={doc.label} href={doc.href} target="_blank" rel="noopener noreferrer" className="cmd-link-muted">
+              <FileText size={11} />
+              {doc.label.toLowerCase()}
+            </a>
+          ))}
+        </footer>
+      </motion.article>
+
+      <ContactModal isOpen={showModal} onClose={() => setShowModal(false)} projectTitle={project.title} />
     </>
   );
 };
 
-export const Projects: React.FC = () => {
-  const enterpriseProjects = projects.filter(p => p.category === 'enterprise');
-  const startupProjects = projects.filter(p => p.category === 'startup');
-  const academicProjects = projects.filter(p => p.category === 'academic');
+const CategoryHeader: React.FC<{ category: Category }> = ({ category }) => {
+  const config = categoryConfig[category];
+  return (
+    <motion.div
+      className="flex items-baseline gap-4 mb-7 pb-3 border-b hairline"
+      initial={{ opacity: 0, x: -8 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+    >
+      <span className="mono-kicker">// {config.slug}</span>
+      <h3 className="font-serif-display text-2xl sm:text-3xl ink">{config.label}</h3>
+      <span className="hidden sm:inline mono-meta ml-auto">{config.description}</span>
+    </motion.div>
+  );
+};
 
-  const renderCategory = (categoryProjects: Project[], categoryKey: 'enterprise' | 'startup' | 'academic') => {
-    const config = categoryConfig[categoryKey];
-    
-    return (
-      <div className="mb-16">
-        <motion.div
-          className="flex items-center gap-4 mb-8"
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-        >
-          <div className={`h-px flex-1 ${config.bgColor}`} />
-          <div className="text-center">
-            <h3 className={`text-2xl font-bold ${config.color}`}>{config.label}</h3>
-            <p className="text-sm text-slate-500">{config.description}</p>
-          </div>
-          <div className={`h-px flex-1 ${config.bgColor}`} />
-        </motion.div>
-        
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categoryProjects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
-          ))}
-        </div>
-      </div>
-    );
-  };
+const BandHeader: React.FC<{ band: Band }> = ({ band }) => {
+  const cfg = bandConfig[band];
+  return (
+    <motion.div
+      className="flex items-center gap-3 mb-5"
+      initial={{ opacity: 0, y: 6 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+    >
+      <span className="ascii-divider text-amber">— {cfg.label}</span>
+      <span className="ascii-divider">{cfg.sublabel}</span>
+    </motion.div>
+  );
+};
+
+export const Projects: React.FC = () => {
+  const enterpriseProjects = projects.filter((p) => p.category === 'enterprise');
+  const agenticProduct = projects.filter((p) => p.category === 'agentic' && p.band === 'product');
+  const agenticOSS = projects.filter((p) => p.category === 'agentic' && p.band === 'oss');
+  const academicProjects = projects.filter((p) => p.category === 'academic');
 
   return (
-    <section
-      id="projects"
-      className="relative py-24 sm:py-32 bg-[#0a0a0f] overflow-hidden"
-    >
-      {/* Background Elements */}
-      <div className="absolute top-1/2 left-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-orange-600/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="projects" className="section-shell py-28 sm:py-40">
+      <div className="absolute inset-0 bg-grid opacity-40 pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-[32rem] h-[32rem] bg-amber-500/[0.05] rounded-full blur-[160px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="text-violet-400 text-sm font-semibold tracking-wider uppercase mb-4 block">
-            Portfolio
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Featured <span className="text-gradient">Projects</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">
-            A selection of projects spanning enterprise solutions, startup innovations, and academic research.
-          </p>
-        </motion.div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="section-header-grid">
+          <div>
+            <span className="mono-kicker block">// 02</span>
+            <span className="mono-meta">selected_work</span>
+          </div>
+          <div>
+            <h2 className="display-section ink mb-4">
+              Selected <em className="italic text-amber-soft">projects</em>.
+            </h2>
+            <p className="ink-dim max-w-2xl">
+              Production work at Agentic Engineering and Tendencia, plus the labs / academic work that fed each into the next.
+            </p>
+          </div>
+        </div>
 
-        {/* Startup Section - Agentic Engineering */}
-        {renderCategory(startupProjects, 'startup')}
-        
-        {/* Enterprise Section - Tendencia Systems */}
-        {renderCategory(enterpriseProjects, 'enterprise')}
-        
-        {/* Academic Section - ITESO */}
-        {renderCategory(academicProjects, 'academic')}
+        <div className="mb-20">
+          <CategoryHeader category="agentic" />
+
+          <BandHeader band="product" />
+          <div className="grid md:grid-cols-2 gap-5 mb-10">
+            {agenticProduct.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+
+          <BandHeader band="oss" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {agenticOSS.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mb-20">
+          <CategoryHeader category="enterprise" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {enterpriseProjects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <CategoryHeader category="academic" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {academicProjects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

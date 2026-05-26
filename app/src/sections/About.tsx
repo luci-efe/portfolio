@@ -1,211 +1,172 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Database, Cloud, Server, Terminal, Users, Zap, GitBranch, Layers, Container } from 'lucide-react';
-import { CountUp } from '@/components/ui/CountUp';
-import { useInView } from '@/hooks/useInView';
+import { Users, Zap, Cloud, Shield } from 'lucide-react';
+import { TechLogo } from '@/components/ui/TechLogo';
 
-const stats = [
-  { value: 2.5, suffix: '+', label: 'Years Experience' },
-  { value: 8, suffix: '+', label: 'Projects Completed' },
-  { value: 3, suffix: '', label: 'Companies' },
-  { value: 300, suffix: 'K+', label: 'Records Processed' },
+interface StackGroup {
+  label: string;
+  slug: string;
+  items: string[];
+}
+
+const stackGroups: StackGroup[] = [
+  {
+    label: 'Frontend',
+    slug: 'frontend',
+    items: ['TypeScript', 'React', 'Tailwind CSS', 'Vite', 'Next.js', 'TanStack Router', 'Radix UI / shadcn'],
+  },
+  {
+    label: 'Cloud & Delivery',
+    slug: 'cloud',
+    items: ['Cloudflare', 'Wrangler', 'Vercel', 'Docker', 'GitHub Actions'],
+  },
+  {
+    label: 'Data & Persistence',
+    slug: 'data',
+    items: ['PostgreSQL', 'SQL', 'Prisma', 'Drizzle ORM', 'Neon', 'libSQL'],
+  },
+  {
+    label: 'AI & Agents',
+    slug: 'agents',
+    items: ['Mastra', 'AI SDK', 'OpenAI SDK', 'Anthropic SDK', 'MCP SDK', 'Vector RAG'],
+  },
 ];
 
-const techStack = [
-  { name: 'React', icon: Code2, color: 'text-cyan-400' },
-  { name: 'TypeScript', icon: Terminal, color: 'text-blue-400' },
-  { name: 'Python', icon: Code2, color: 'text-yellow-400' },
-  { name: 'PostgreSQL', icon: Database, color: 'text-emerald-400' },
-  { name: 'Neon', icon: Database, color: 'text-teal-400' },
-  { name: 'Docker', icon: Server, color: 'text-blue-500' },
-  { name: 'Cloudflare', icon: Cloud, color: 'text-orange-400' },
-  { name: 'Mastra', icon: Zap, color: 'text-pink-400' },
-  { name: 'Terraform', icon: Container, color: 'text-purple-400' },
-  { name: 'GitHub Actions', icon: GitBranch, color: 'text-slate-300' },
-  { name: 'Linear', icon: Layers, color: 'text-indigo-400' },
+const alsoUsed = [
+  'TanStack Query', 'Vitest', 'Playwright', 'Python', 'Node.js', 'Lucide',
+  'n8n', 'Vapi', 'Twilio', 'ElevenLabs', 'HubSpot', 'Zoho CRM',
+  'Convex', 'Supabase', 'AWS', 'Google Cloud', 'Honcho SDK', 'Linear',
+];
+
+const certifications = [
+  'Google Project Management Foundations · 2025',
+  'IBM Generative AI: Prompt Engineering · 2025',
+  'Google Manage Security Risks · 2024',
+  'Google Tools of the Trade: Linux & SQL · 2024',
+  'Cisco CCNAv7 · 2023',
 ];
 
 export const About: React.FC = () => {
-  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.2 });
-
   return (
-    <section
-      id="about"
-      className="relative py-24 sm:py-32 bg-[#0a0a0f] overflow-hidden"
-    >
-      {/* Background Elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-violet-600/10 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-600/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="about" className="section-shell py-20 sm:py-28">
+      <div className="absolute top-0 right-0 w-[28rem] h-[28rem] bg-amber-500/[0.05] rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        {/* Section Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="text-cyan-400 text-sm font-semibold tracking-wider uppercase mb-4 block">
-            About Me
-          </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-            Passionate about <span className="text-gradient">AI & Automation</span>
-          </h2>
-        </motion.div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="section-header-grid">
+          <div>
+            <span className="mono-kicker block">// 01</span>
+            <span className="mono-meta">about</span>
+          </div>
+          <div>
+            <h2 className="display-section ink mb-4">
+              Engineer first. <em className="italic text-amber-soft">Founder</em> second.
+            </h2>
+            <p className="ink-dim max-w-2xl">
+              The risk-mitigation mindset I picked up doing InfoSec still shapes how I design AI infrastructure today.
+            </p>
+          </div>
+        </div>
 
-        {/* Stats Grid */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          {stats.map((stat, index) => (
-            <motion.div
-              key={stat.label}
-              className="glass-card rounded-2xl p-6 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ scale: 1.02, y: -5 }}
-            >
-              <div className="text-4xl sm:text-5xl font-bold text-gradient mb-2">
-                {isInView ? (
-                  <CountUp
-                    end={stat.value}
-                    duration={2000}
-                    suffix={stat.suffix}
-                  />
-                ) : (
-                  `0${stat.suffix}`
-                )}
-              </div>
-              <div className="text-sm text-slate-400">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Content Grid */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Bio */}
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.5 }}
           >
-            <div className="glass-card rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Co-founder of <span className="text-violet-400">Agentic Engineering</span>
-              </h3>
-              <div className="space-y-4 text-slate-400 leading-relaxed">
-                <p>
-                  I'm a <span className="text-cyan-400 font-semibold">Software Developer & AI Engineer</span> based in Jalisco, México, 
-                  with a passion for building intelligent systems that transform businesses.
-                </p>
-                <p>
-                  What sets me apart? I'm not just a coder—I'm a <span className="text-violet-400 font-semibold">PM-turned-developer</span> who has 
-                  led teams of 8 people while staying hands-on with cutting-edge tech.
-                </p>
-                <p>
-                  My philosophy: <span className="text-orange-400 font-semibold">"AI Orchestrator"</span>—I don't just write code, I orchestrate multiple 
-                  AI agents to build complete solutions. This approach let me deliver a full-stack 
-                  app (ReparaYa) solo in 2 weeks.
-                </p>
-                <p>
-                  As co-founder of Agentic Engineering, I lead the development of AI automation 
-                  solutions achieving <span className="text-emerald-400 font-semibold">99.5% cost reduction</span> with our Cloudflare + Convex + Mastra architecture.
-                </p>
-                <p>
-                  Currently completing my Computer Systems Engineering degree at ITESO, 
-                  graduating in <span className="text-cyan-400">December 2026</span>.
-                </p>
-              </div>
+            <div className="space-y-5 ink-dim leading-relaxed">
+              <p>
+                Computer Systems Engineer based in Jalisco, México, building <span className="ink font-medium">production AI systems</span>, legal AI products, and open-source tooling for autonomous workflows.
+              </p>
+              <p>
+                Focused on <span className="text-amber-soft font-medium">multi-agent orchestration</span>, secure infrastructure, and automating operational work with human oversight — the parts most teams skip when shipping AI.
+              </p>
+              <p>
+                At Agentic Engineering I lead the design and delivery of production-grade AI systems: custom AI products, workflow automation, and the <span className="ink font-medium">Cloudflare + Mastra + TanStack</span> stack that powers them at a fraction of hyperscaler cost.
+              </p>
+              <p>
+                Path here: <span className="text-amber-soft font-medium">InfoSec</span> at Eternal Data → <span className="text-amber-soft font-medium">enterprise AI delivery</span> at Tendencia Systems (Software Dev → Tech PM) → <span className="text-amber-soft font-medium">founder</span> at Agentic Engineering.
+              </p>
+              <p>
+                Completing my B.S. in Computer Systems Engineering at ITESO, graduating <span className="ink">December 2026</span>.
+              </p>
+            </div>
 
-              {/* Differentiators */}
-              <div className="mt-6 pt-6 border-t border-white/10">
-                <h4 className="text-lg font-semibold text-white mb-4">What Makes Me Different</h4>
-                <ul className="space-y-2 text-sm text-slate-400">
-                  <li className="flex items-center gap-2">
-                    <Users size={16} className="text-cyan-400" />
-                    <span>Led teams of 8 (seniors, juniors, DevOps, QA, designers)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Zap size={16} className="text-orange-400" />
-                    <span>Always at cutting-edge technology (Mastra, RAG, Vector Search)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Zap size={16} className="text-violet-400" />
-                    <span>Spec-Driven Development & AI-augmented workflows</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <Cloud size={16} className="text-emerald-400" />
-                    <span>DevOps focus: CI/CD, automation, Cloudflare infrastructure</span>
-                  </li>
-                </ul>
-              </div>
+            <div className="mt-8 pt-6 border-t hairline">
+              <span className="mono-kicker mb-4 block">// edge</span>
+              <ul className="space-y-2.5 text-sm ink-dim">
+                <li className="flex items-start gap-3">
+                  <Users size={14} className="text-amber-soft mt-1 flex-shrink-0" />
+                  <span>Led an 8-person team to ship Tendencia's highest-revenue AI projects.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Zap size={14} className="text-amber-soft mt-1 flex-shrink-0" />
+                  <span>Multi-agent orchestration in production (Mastra, RAG, vector search).</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Shield size={14} className="text-amber-soft mt-1 flex-shrink-0" />
+                  <span>Author of open-source agent tooling (SpecSafe, Ultimate Harness).</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Cloud size={14} className="text-amber-soft mt-1 flex-shrink-0" />
+                  <span>Security-first AI infrastructure on Cloudflare, Terraform, CI/CD.</span>
+                </li>
+              </ul>
             </div>
           </motion.div>
 
-          {/* Tech Stack */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="terminal-block p-0"
           >
-            <div className="glass-card rounded-2xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Tech Stack
-              </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {techStack.map((tech, index) => (
-                  <motion.div
-                    key={tech.name}
-                    className="flex flex-col items-center gap-3 p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer group"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.05 }}
-                    whileHover={{ scale: 1.05, rotate: 5 }}
-                  >
-                    <tech.icon
-                      size={28}
-                      className={`${tech.color} transition-transform group-hover:scale-110`}
-                    />
-                    <span className="text-xs text-slate-400 group-hover:text-white transition-colors">
-                      {tech.name}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
+            <div className="flex items-center gap-3 px-5 py-3 border-b hairline">
+              <span className="w-2 h-2 bg-amber-500" />
+              <span className="mono-meta flex-1">~/stack.toml</span>
+              <span className="mono-meta text-[10px] ink-faint">last-edit · today</span>
+            </div>
 
-              {/* Additional Skills */}
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <h4 className="text-lg font-semibold text-white mb-4">Also Experienced With</h4>
-                <div className="flex flex-wrap gap-2">
-                  {['Vapi', 'n8n', 'Twilio', 'Supabase', 'Convex', 'Digital Ocean', 'AWS', 'HubSpot', 'Zoho CRM', 'ElevenLabs'].map((skill) => (
-                    <span
-                      key={skill}
-                      className="px-3 py-1 text-xs rounded-full bg-white/5 text-slate-400 hover:bg-white/10 hover:text-white transition-colors"
+            <div className="p-6 space-y-7">
+              {stackGroups.map((group) => (
+                <div key={group.slug}>
+                  <div className="mono-kicker mb-3">[{group.slug}]</div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {group.items.map((item) => (
+                      <div
+                        key={item}
+                        className="flex items-center gap-2.5 px-2.5 py-2 border hairline rounded-sm hover:border-amber-500/40 hover:bg-white/[0.03] transition-colors"
+                      >
+                        <TechLogo name={item} size={16} className="flex-shrink-0" />
+                        <span className="font-mono-ui text-[11px] ink-dim truncate">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <div className="pt-4 border-t hairline">
+                <div className="mono-kicker mb-3">[also_used]</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {alsoUsed.map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-1.5 px-2 py-1 border hairline rounded-sm"
                     >
-                      {skill}
-                    </span>
+                      <TechLogo name={item} size={12} className="flex-shrink-0" />
+                      <span className="font-mono-ui text-[10px] ink-dim">{item}</span>
+                    </div>
                   ))}
                 </div>
               </div>
 
-              {/* Certifications */}
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <h4 className="text-lg font-semibold text-white mb-4">Certifications</h4>
-                <ul className="space-y-2 text-sm text-slate-400">
-                  <li>• Google Project Management Professional</li>
-                  <li>• IBM Generative AI: Prompt Engineering</li>
-                  <li>• Google Security & Risk Management</li>
-                  <li>• Cisco CCNAv7 Networking Essentials</li>
+              <div className="pt-4 border-t hairline">
+                <div className="mono-kicker mb-3">[certifications]</div>
+                <ul className="space-y-1.5">
+                  {certifications.map((c) => (
+                    <li key={c} className="mono-meta text-[11px]">{c}</li>
+                  ))}
                 </ul>
               </div>
             </div>

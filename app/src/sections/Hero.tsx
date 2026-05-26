@@ -1,180 +1,178 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, ChevronDown, Download, FolderGit2 } from 'lucide-react';
-import { TypewriterText } from '@/components/ui/TypewriterText';
-import { FloatingShape } from '@/components/ui/FloatingShape';
-import { MagneticButton } from '@/components/ui/MagneticButton';
+import { ChevronDown, ArrowRight, ExternalLink } from 'lucide-react';
+
+const TERMINAL_LINES: { kind: 'prompt' | 'output' | 'comment'; text: string }[] = [
+  { kind: 'prompt', text: 'whoami' },
+  { kind: 'output', text: 'Computer Systems Engineer · Co-Founder, Agentic Engineering' },
+  { kind: 'prompt', text: 'cat ~/focus.md' },
+  {
+    kind: 'output',
+    text: 'Production AI systems · legal AI · open-source agent tooling',
+  },
+  { kind: 'comment', text: 'multi-agent orchestration · secure infrastructure · human oversight' },
+];
 
 export const Hero: React.FC = () => {
   const scrollToProjects = () => {
-    const element = document.querySelector('#projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-mesh"
+      className="relative min-h-screen flex items-center overflow-hidden pt-28 pb-16"
     >
-      {/* Floating Shapes */}
-      <FloatingShape
-        variant="cube"
-        size={100}
-        color="rgba(99, 102, 241, 0.2)"
-        className="top-[15%] left-[10%]"
-        delay={0}
-      />
-      <FloatingShape
-        variant="sphere"
-        size={60}
-        color="rgba(6, 182, 212, 0.25)"
-        className="top-[25%] right-[15%]"
-        delay={2}
-        duration={7}
-      />
-      <FloatingShape
-        variant="ring"
-        size={80}
-        color="rgba(249, 115, 22, 0.2)"
-        className="bottom-[20%] left-[20%]"
-        delay={4}
-        duration={8}
-      />
-      <FloatingShape
-        variant="pyramid"
-        size={70}
-        color="rgba(99, 102, 241, 0.15)"
-        className="bottom-[30%] right-[10%]"
-        delay={1}
-        duration={6}
-      />
+      <div className="absolute inset-0 bg-grid pointer-events-none opacity-50" />
+      <div className="absolute inset-0 bg-scanlines pointer-events-none opacity-60" />
+      <div className="absolute top-0 right-0 h-[60vh] w-[60vw] bg-gradient-to-bl from-amber-500/10 via-transparent to-transparent pointer-events-none" />
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-600/15 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[150px] pointer-events-none" />
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        {/* Location Badge */}
-        <motion.div
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <MapPin size={16} className="text-cyan-400" />
-          <span className="text-sm text-slate-300">Jalisco, México</span>
-        </motion.div>
-
-        {/* Main Title */}
-        <motion.h1
-          className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <span className="text-gradient">Fernando Ramos</span>
-        </motion.h1>
-
-        {/* Subtitle with Typewriter */}
-        <motion.div
-          className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-300 mb-4 h-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        >
-          <TypewriterText
-            text="Software Developer & AI Engineer"
-            speed={60}
-            delay={800}
-            className="text-cyan-400"
-          />
-        </motion.div>
-
-        {/* Description */}
-        <motion.p
-          className="text-lg text-slate-400 max-w-2xl mx-auto mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-        >
-          Building intelligent systems that transform businesses. 
-          Specialized in AI automation, voice agents, and scalable cloud architectures.
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-        >
-          <MagneticButton variant="primary" onClick={scrollToProjects}>
-            <FolderGit2 size={18} className="inline mr-2" />
-            View Projects
-          </MagneticButton>
-          <a
-            href="/Fernando_Ramos_CV.pdf"
-            download="Fernando_Ramos_CV.pdf"
-            className="inline-flex"
-          >
-            <MagneticButton variant="secondary">
-              <Download size={18} className="inline mr-2" />
-              Download CV
-            </MagneticButton>
-          </a>
-        </motion.div>
-
-        {/* Stats Preview */}
-        <motion.div
-          className="flex flex-wrap items-center justify-center gap-8 mt-16"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
-        >
-          {[
-            { value: '2.5+', label: 'Years Experience' },
-            { value: '8+', label: 'Projects' },
-            { value: '300K+', label: 'Records Processed' },
-          ].map((stat, index) => (
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-20 items-center">
+          <div>
             <motion.div
-              key={stat.label}
-              className="text-center"
+              className="flex flex-wrap items-center gap-3 mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <span className="mono-kicker">// JALISCO, MX</span>
+              <span className="h-px w-10 bg-amber-500/60" />
+              <span className="mono-meta">Available for collaboration</span>
+            </motion.div>
+
+            <motion.h1
+              className="display-hero ink mb-6"
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.05 }}
+            >
+              Fernando <em className="italic text-amber-soft">Ramos</em>.
+            </motion.h1>
+
+            <motion.p
+              className="font-serif-display text-2xl sm:text-3xl ink-dim leading-snug mb-8 max-w-xl"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+            >
+              Computer Systems Engineer · Co-Founder, <span className="ink">Agentic Engineering</span>.
+            </motion.p>
+
+            <motion.p
+              className="max-w-xl ink-dim leading-relaxed mb-10"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 1 + index * 0.1 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
             >
-              <div className="text-2xl sm:text-3xl font-bold text-white">{stat.value}</div>
-              <div className="text-sm text-slate-500">{stat.label}</div>
+              Building <span className="ink">production AI systems</span>, legal AI products, and open-source tooling for autonomous engineering — multi-agent orchestration, secure infrastructure, and human oversight at the core.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-wrap items-center gap-4 mb-14"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <button onClick={scrollToProjects} className="btn-primary inline-flex items-center gap-2">
+                See selected work
+                <ArrowRight size={16} />
+              </button>
+              <a
+                href="/Fernando_Ramos_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary inline-flex items-center gap-2"
+              >
+                <ExternalLink size={16} />
+                View CV
+              </a>
             </motion.div>
-          ))}
-        </motion.div>
+
+            <motion.div
+              className="flex flex-wrap gap-x-10 gap-y-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+            >
+              {[
+                { value: '3+', label: 'years shipping', meta: 'eternal data → ai' },
+                { value: '700+', label: 'calls/mo automated', meta: 'voicebot fleet @ tendencia' },
+                { value: '2', label: 'OSS tools published', meta: 'specsafe · ultimate harness' },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="font-serif-display text-4xl ink leading-none">{stat.value}</div>
+                  <div className="mono-meta mt-2">{stat.label}</div>
+                  <div className="mono-meta text-[10px] opacity-70">{stat.meta}</div>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
+            className="block mt-12 lg:mt-0"
+          >
+            <div className="terminal-block p-0 overflow-hidden">
+              <div className="flex items-center gap-3 px-4 py-2.5 border-b hairline">
+                <span className="w-2 h-2 bg-amber-500" />
+                <span className="mono-meta flex-1">~/fernando/portfolio</span>
+                <span className="mono-meta text-[10px] ink-faint">v2.6.0 · live</span>
+              </div>
+
+              <div className="p-6 space-y-2.5 text-[13.5px] leading-relaxed">
+                {TERMINAL_LINES.map((line, i) => {
+                  if (line.kind === 'prompt') {
+                    return (
+                      <div key={i} className="flex gap-2">
+                        <span className="text-amber select-none">$</span>
+                        <span className="ink">{line.text}</span>
+                      </div>
+                    );
+                  }
+                  if (line.kind === 'comment') {
+                    return (
+                      <div key={i} className="ink-faint">
+                        <span className="select-none"># </span>
+                        {line.text}
+                      </div>
+                    );
+                  }
+                  return (
+                    <div key={i} className="ink-dim pl-3.5">
+                      {line.text}
+                    </div>
+                  );
+                })}
+                <div className="flex gap-2 pt-1">
+                  <span className="text-amber select-none">$</span>
+                  <span className="caret" />
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-4 flex items-center justify-between mono-meta">
+              <span>uptime · 3y 0mo</span>
+              <span>stack · ts · tanstack · cloudflare · sql</span>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+      <motion.button
+        type="button"
+        className="hidden lg:flex absolute bottom-6 left-1/2 -translate-x-1/2 ink-faint hover:text-amber transition-colors flex-col items-center gap-1"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
+        aria-label="Scroll to about section"
       >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="text-slate-500 cursor-pointer"
-          onClick={() => {
-            const element = document.querySelector('#about');
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth' });
-            }
-          }}
-        >
-          <ChevronDown size={32} />
-        </motion.div>
-      </motion.div>
+        <span className="mono-meta text-[10px]">scroll ↓</span>
+        <ChevronDown size={16} />
+      </motion.button>
     </section>
   );
 };
