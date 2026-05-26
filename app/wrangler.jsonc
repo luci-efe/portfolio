@@ -13,6 +13,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "fernando-ramos-portfolio",
+  "account_id": "4105f6b01897184bf93014d65f1a60f7",
   "compatibility_date": "2026-05-20",
   "assets": {
     "directory": "./dist",
