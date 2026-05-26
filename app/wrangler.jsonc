@@ -15,10 +15,19 @@
   "name": "fernando-ramos-portfolio",
   "account_id": "4105f6b01897184bf93014d65f1a60f7",
   "compatibility_date": "2026-05-20",
+  "workers_dev": true,
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
   },
+  // Custom domain — re-enable once fernandoramos.work is added as a zone in
+  // the personal Cloudflare account (4105f6b…) and the Namecheap nameservers
+  // are switched to Cloudflare. Until then the workers.dev URL serves the site.
+  //
+  // "routes": [
+  //   { "pattern": "fernandoramos.work", "custom_domain": true },
+  //   { "pattern": "www.fernandoramos.work", "custom_domain": true }
+  // ],
   "observability": {
     "enabled": true
   }
